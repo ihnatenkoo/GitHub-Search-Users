@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDebounce } from '../hooks/debounce.hook';
 import { useSearchUsersQuery } from '../store/github/github.api';
 
 const HomePage = () => {
   const [search, setSearch] = useState('');
+  const debounced = useDebounce(search);
   const { data, isLoading, isError } = useSearchUsersQuery('ihn');
+
+  useEffect(() => {
+    console.log('query');
+  }, [debounced]);
+
   return (
     <div className="flex justify-center mt-10 mx-auto h-screen w-screen">
       {isLoading && <h2 className="text-center text-red-600">Something went wrong...</h2>}
