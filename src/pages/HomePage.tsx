@@ -4,16 +4,23 @@ import { useSearchUsersQuery } from '../store/github/github.api';
 
 const HomePage = () => {
   const [search, setSearch] = useState('');
+  const [showUsers, setShowUsers] = useState(false);
   const debounced = useDebounce(search);
-  const { data, isLoading, isError } = useSearchUsersQuery('ihn');
+  const {
+    data: users,
+    isFetching,
+    isError
+  } = useSearchUsersQuery(search, {
+    skip: debounced.length <= 3
+  });
 
   useEffect(() => {
-    console.log('query');
-  }, [debounced]);
+    setShowUsers(debounced.length > 3 && users?.length! > 0);
+  }, [debounced, users]);
 
   return (
     <div className="flex justify-center mt-10 mx-auto h-screen w-screen">
-      {isLoading && <h2 className="text-center text-red-600">Something went wrong...</h2>}
+      {isError && <h2 className="text-center text-red-600">Something went wrong...</h2>}
 
       <div className="relative w-[560px]">
         <input
@@ -23,11 +30,18 @@ const HomePage = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="absolute top-[42px] left-0 right-0 max-h-[200px] shadow-md bg-white">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam unde iusto, officia
-          distinctio nemo eveniet ea adipisci dolor laborum placeat excepturi molestias accusantium
-          sint ipsam corporis tempora quam harum sunt.
-        </div>
+        <ul className="list-none absolute top-[42px] left-0 right-0 max-h-[200px] shadow-md bg-white overflow-y-scroll">
+          {isFetching && <p className="text-center">Loading...</p>}
+          {showUsers &&
+            users?.map((user) => (
+              <li
+                className="py-2 px-4 hover:bg-gray-500 hover:text-white transition-colors cursor-pointer"
+                key={user.id}
+              >
+                {user.login}
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
