@@ -4,12 +4,12 @@ import { useLazyGetUserInfoQuery } from '../../store/github/github.api';
 import UserInfo from './UserInfo/UserInfo';
 
 const User = () => {
-  const { selectedUser } = useAppSelector((state) => state.userReducer);
+  const { selectedUser } = useAppSelector((state) => state.user);
   const [fetchUser, { data: user, isError }] = useLazyGetUserInfoQuery();
 
   useEffect(() => {
     if (selectedUser) fetchUser(selectedUser);
-  }, [selectedUser]);
+  }, [selectedUser, fetchUser]);
 
   return (
     <div>

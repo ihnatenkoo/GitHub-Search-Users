@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { useDebounce } from '../../hooks/debounce.hook';
-import { setSelectedUser } from '../../store/actions';
+import { SET_SELECTED_USER } from '../../store/user/userSlice';
 import { useSearchUsersQuery } from '../../store/github/github.api';
 
 const SearchPanel: FC = () => {
@@ -21,11 +21,11 @@ const SearchPanel: FC = () => {
 
   const getUserInfo = (username: string) => {
     setShowDropdown(false);
-    dispatch(setSelectedUser(username));
+    dispatch(SET_SELECTED_USER(username));
   };
 
   useEffect(() => {
-    setShowDropdown(debounced.length > 3 && users?.length! > 0);
+    if (users && users.length > 0) setShowDropdown(debounced.length > 3);
   }, [debounced, users]);
 
   return (

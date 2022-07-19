@@ -6,7 +6,7 @@ interface IUserInfoProps {
 }
 
 const UserInfo: FC<IUserInfoProps> = ({ user }) => {
-  const { login, avatar_url, bio, location, name, public_repos, email, blog, url } = user!;
+  const { login, avatar_url, bio, location, name, public_repos, email, blog, html_url } = user!;
 
   return (
     <>
@@ -47,12 +47,12 @@ const UserInfo: FC<IUserInfoProps> = ({ user }) => {
           <li>
             GitHub:{' '}
             <a
-              href={url}
+              href={html_url}
               target="_blank"
               rel="noreferrer"
               className="font-medium text-blue-500 mt-1 block"
             >
-              {url}
+              {html_url}
             </a>
           </li>
         </ul>
