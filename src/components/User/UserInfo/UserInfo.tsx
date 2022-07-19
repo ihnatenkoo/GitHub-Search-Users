@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { ISingleUser } from '../../../types/types';
-
+import { checkTextValue } from '../../../utils/';
 interface IUserInfoProps {
   user: ISingleUser;
 }
 
 const UserInfo: FC<IUserInfoProps> = ({ user }) => {
-  const { login, avatar_url, bio, location, name, public_repos, email, blog, html_url } = user!;
+  const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user!;
 
   return (
     <>
@@ -22,27 +22,31 @@ const UserInfo: FC<IUserInfoProps> = ({ user }) => {
             Login: <span className="font-normal text-gray-500">{login}</span>
           </li>
           <li className="mb-2">
-            Name: <span className="font-normal text-gray-500">{name}</span>
+            Name: <span className="font-normal text-gray-500">{checkTextValue(name)}</span>
           </li>
           <li className="mb-2 leading-5">
-            Bio: <span className="font-normal text-gray-500">{bio}</span>
+            Bio: <span className="font-normal text-gray-500">{checkTextValue(bio)}</span>
           </li>
           <li className="mb-2">
-            Location: <span className="font-normal text-gray-500">{location}</span>
+            Location: <span className="font-normal text-gray-500">{checkTextValue(location)}</span>
           </li>
           <li className="mb-2">
             Repositories: <span className="font-normal text-gray-500">{public_repos}</span>
           </li>
           <li className="mb-2">
             Blog:{' '}
-            <a
-              href={blog}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-blue-500 mt-1 block"
-            >
-              {blog}
-            </a>
+            {blog ? (
+              <a
+                href={blog}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-blue-500 mt-1 block"
+              >
+                {blog}
+              </a>
+            ) : (
+              '-'
+            )}
           </li>
           <li>
             GitHub:{' '}
