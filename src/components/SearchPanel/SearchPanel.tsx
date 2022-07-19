@@ -16,23 +16,24 @@ const SearchPanel: FC = () => {
     isFetching,
     isError
   } = useSearchUsersQuery(search, {
-    skip: debounced.length <= 3
+    skip: debounced.length < 3 || search === ''
   });
 
   const getUserInfo = (username: string) => {
     setShowDropdown(false);
+    setSearch('');
     dispatch(SET_SELECTED_USER(username));
   };
 
   useEffect(() => {
-    if (users && users.length > 0) setShowDropdown(debounced.length > 3);
+    if (users && users.length > 0 && debounced.length >= 3) setShowDropdown(true);
   }, [debounced, users]);
 
   return (
-    <div className="mb-8">
+    <div className="mx-auto mb-6 relative w-[560px] max-w-full">
       <input
         type="text"
-        className="border py-2 px-4 w-full h-[42px]"
+        className="border py-2 px-4 w-full h-[42px] rounded-md"
         placeholder="Search for Github username..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -50,9 +51,9 @@ const SearchPanel: FC = () => {
           ))}
       </ul>
 
-      <div className="text-center py-2">
-        {isFetching && <p>Loading...</p>}
-        {isError && <h2 className="text-red-600 ">Something went wrong...</h2>}
+      <div className="text-center py-2 absolute top-[5px] right-[10px]">
+        {isFetching && !isError && <p>Loading...</p>}
+        {isError && !isFetching && <h2 className="text-red-600 ">Something went wrong...</h2>}
       </div>
     </div>
   );

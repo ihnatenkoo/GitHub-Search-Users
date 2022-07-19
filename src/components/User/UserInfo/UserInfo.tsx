@@ -3,19 +3,20 @@ import { ISingleUser } from '../../../types/types';
 import { checkTextValue } from '../../../utils/';
 interface IUserInfoProps {
   user: ISingleUser;
+  error: boolean;
 }
 
-const UserInfo: FC<IUserInfoProps> = ({ user }) => {
+const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user!;
 
   return (
-    <>
-      <h3 className="text-center font-bold text-gray-600 mb-4 text-lg">User Information</h3>
-      <div className="flex flex-row">
+    <div className="mr-10 w-[500px] max-w-full">
+      <h3 className="font-bold text-gray-600 mb-3 text-lg">User Information</h3>
+      <div className="flex flex-wrap">
         <img
           src={avatar_url}
           alt={`${name} avatar`}
-          className="max-w-full w-[220px] h-auto mr-5 rounded-md"
+          className="mb-3 max-w-full w-[220px] h-auto mr-5 rounded-md"
         />
         <ul className="text-gray-600 font-bold">
           <li className="mb-2">
@@ -61,7 +62,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user }) => {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 export default UserInfo;

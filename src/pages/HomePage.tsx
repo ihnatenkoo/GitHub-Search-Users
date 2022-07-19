@@ -3,12 +3,11 @@ import User from '../components/User';
 
 const HomePage = () => {
   return (
-    <div className="flex justify-center mt-10 mx-auto">
-      <div className="relative w-[560px]">
-        <SearchPanel />
-        <User />
-      </div>
-    </div>
+    <section className="mt-10">
+      <SearchPanel />
+      <User />
+    </section>
   );
 };
+
 export default HomePage;
