@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../../hooks';
 import { useLazyGetUserInfoQuery, useLazyGetUserReposQuery } from '../../store/github/github.api';
+import { Spinner } from '../Spinner/Spinner';
 import UserInfo from './UserInfo/UserInfo';
 import UserRepos from './UserRepos/UserRepos';
 
@@ -17,8 +18,9 @@ const User = () => {
   }, [selectedUser, fetchUser, fetchUserRepos]);
 
   if (isFetching) {
-    return <div className="text-center">Loading...</div>;
+    return <Spinner />;
   }
+
   return (
     <div className="flex justify-center flex-wrap max-w-full h-[300px] max-h-full">
       {user && (

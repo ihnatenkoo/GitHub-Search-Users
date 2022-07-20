@@ -12,7 +12,10 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
   return (
     <div className="w-[500px] max-w-full h-[300px]">
       <h3 className="font-bold text-gray-600 mb-3 text-lg">Repositories</h3>
-      <ul className="h-[300px] overflow-hidden overflow-y-scroll">
+      <ul className="h-[300px] overflow-hidden overflow-y-auto">
+        {repos?.length === 0 && (
+          <p className="font-medium text-red-400">List of repositories is empty</p>
+        )}
         {repos &&
           repos.map((i) => (
             <li className="mb-2 p-3 bg-white border">
