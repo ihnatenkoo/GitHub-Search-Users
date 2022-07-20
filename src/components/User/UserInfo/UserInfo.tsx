@@ -9,6 +9,8 @@ interface IUserInfoProps {
 const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user!;
 
+  if (error) return <p className="mr-10 font-medium text-red-400">Error user loading...</p>;
+
   return (
     <div className="mr-10 w-[500px] max-w-full">
       <h3 className="font-bold text-gray-600 mb-3 text-lg">User Information</h3>

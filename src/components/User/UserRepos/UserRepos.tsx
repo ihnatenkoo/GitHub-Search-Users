@@ -8,7 +8,8 @@ interface IUserReposProps {
 }
 
 const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
-  console.log(repos);
+  if (error) return <p className="font-medium text-red-400">Error repositories loading...</p>;
+
   return (
     <div className="w-[500px] max-w-full h-[300px]">
       <h3 className="font-bold text-gray-600 mb-3 text-lg">Repositories</h3>
