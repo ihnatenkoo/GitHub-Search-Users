@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IRepos } from '../../../types/types';
-import { checkTextValue } from '../../../utils';
+import { checkTextValue, setIconPath } from '../../../utils';
 
 import dayjs from 'dayjs';
 
@@ -28,9 +28,9 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
               <a href={i.html_url} className="flex items-center" target="_blank" rel="noreferrer">
                 <div className="mr-5 text-center text-sm w-[65px] shrink ">
                   <img
-                    className="w-[65px] h-auto rounded-xl"
-                    src="/images/languages/css.png"
-                    alt=""
+                    className="mb-1 w-[65px] h-auto rounded-xl"
+                    src={setIconPath(i.language)}
+                    alt={`${i.language} icon`}
                   />
                   <span>{checkTextValue(i.language)}</span>
                 </div>
