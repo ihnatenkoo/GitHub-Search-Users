@@ -12,15 +12,15 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   if (error) return <p className="mr-10 font-medium text-red-400">Error user loading...</p>;
 
   return (
-    <div className="mr-10 w-[500px] max-w-full">
+    <div className=" w-[550px] max-w-full">
       <h3 className="font-bold text-gray-600 mb-3 text-lg">User Information</h3>
       <div className="flex flex-wrap">
         <img
           src={avatar_url}
           alt={`${name} avatar`}
-          className="mb-3 max-w-full w-[220px] h-auto mr-5 rounded-md"
+          className="mr-3 mb-3 max-w-full w-[220px] h-[220px]  rounded-md"
         />
-        <ul className="text-gray-600 font-bold">
+        <ul className="text-gray-600 font-bold max-w-[300px]">
           <li className="mb-2">
             Login: <span className="font-normal text-gray-500">{login}</span>
           </li>
@@ -43,7 +43,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
                 href={blog}
                 target="_blank"
                 rel="noreferrer"
-                className="font-medium text-blue-500 mt-1 block"
+                className="text-sm font-medium text-blue-500 mt-1 block"
               >
                 {blog}
               </a>
@@ -57,7 +57,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
               href={html_url}
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-blue-500 mt-1 block"
+              className="text-sm font-medium text-blue-500 mt-1 block"
             >
               {html_url}
             </a>
