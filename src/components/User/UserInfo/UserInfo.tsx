@@ -18,7 +18,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
         <img
           src={avatar_url}
           alt={`${name} avatar`}
-          className="mr-3 mb-3 max-w-full w-[220px] h-[220px]  rounded-md"
+          className="mr-3 mb-3 max-w-full w-[220px] h-[220px] rounded-md"
         />
         <ul className="text-gray-600 font-bold max-w-[300px]">
           <li className="mb-2">

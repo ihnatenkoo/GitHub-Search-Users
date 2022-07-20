@@ -25,6 +25,11 @@ const SearchPanel: FC = () => {
     dispatch(SET_SELECTED_USER(username));
   };
 
+  const clearInputHandler = () => {
+    setShowDropdown(false);
+    setSearch('');
+  };
+
   useEffect(() => {
     if (users && users.length > 0 && debounced.length >= 3) setShowDropdown(true);
   }, [debounced, users]);
@@ -38,6 +43,16 @@ const SearchPanel: FC = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      {search && (
+        <button>
+          <img
+            src="/images/icons/close.svg"
+            alt="close icon"
+            className="absolute z-10 top-3 right-3 w-[20px] h-[20px] fill-gray-500 cursor-pointer animate-in"
+            onClick={clearInputHandler}
+          />
+        </button>
+      )}
       <ul className="list-none absolute top-[42px] left-0 right-0 max-h-[200px] shadow-md bg-white overflow-y-scroll">
         {showDropdown &&
           users?.map((user) => (
@@ -52,8 +67,8 @@ const SearchPanel: FC = () => {
       </ul>
 
       <div className="text-center py-2 absolute top-[5px] right-[10px]">
-        {isFetching && !isError && <p>Loading...</p>}
-        {isError && !isFetching && <h2 className="text-red-600 ">Something went wrong...</h2>}
+        {isFetching && !isError && <p className="mr-8 ">Loading...</p>}
+        {isError && !isFetching && <h2 className="mr-8 text-red-600 ">Something went wrong...</h2>}
       </div>
     </div>
   );

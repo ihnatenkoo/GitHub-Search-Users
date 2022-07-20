@@ -6,10 +6,12 @@ const Navigation = () => {
       <h3 className="font-bold">Github Search</h3>
 
       <span>
-        <Link to="/" className="mr-2">
+        <Link to="/" className="mr-4 hover:text-gray-300 transition-all">
           Home
         </Link>
-        <Link to="/favorite">Favorite</Link>
+        <Link to="/favorite" className="hover:text-gray-300 transition-all">
+          Favorite
+        </Link>
       </span>
     </nav>
   );

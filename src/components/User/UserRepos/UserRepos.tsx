@@ -13,9 +13,9 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
   if (error) return <p className="font-medium text-red-400">Error repositories loading...</p>;
 
   return (
-    <div className="w-[550px] max-w-full h-[300px]">
+    <div className="w-[550px] max-w-full h-[430px]">
       <h3 className="font-bold text-gray-600 mb-3 text-lg">Repositories</h3>
-      <ul className="h-[300px] overflow-hidden overflow-y-auto">
+      <ul className="h-[390px] overflow-hidden overflow-y-auto">
         {repos?.length === 0 && (
           <p className="font-medium text-red-400">List of repositories is empty</p>
         )}
@@ -23,7 +23,7 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
           repos.map((i) => (
             <li
               key={i.id}
-              className="mb-2 p-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 transition-all"
+              className="mb-2 p-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all"
             >
               <a href={i.html_url} className="flex items-center" target="_blank" rel="noreferrer">
                 <div className="mr-5 text-center text-sm w-[65px] shrink ">
@@ -35,11 +35,11 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
                   <span>{checkTextValue(i.language)}</span>
                 </div>
 
-                <article>
+                <article className="w-[425px]">
                   <p className="mb-2 font-bold">{i.name}</p>
                   <p className="mb-2 font-light">
-                    {i.description?.length > 60
-                      ? i.description.slice(0, 60) + '...'
+                    {i.description?.length > 55
+                      ? i.description.slice(0, 55) + '...'
                       : i.description}
                   </p>
                   <div className="mb-2">

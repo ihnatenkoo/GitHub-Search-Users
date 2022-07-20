@@ -3,10 +3,10 @@ import User from '../components/User';
 
 const HomePage = () => {
   return (
-    <section className="mt-10">
+    <>
       <SearchPanel />
       <User />
-    </section>
+    </>
   );
 };
 
