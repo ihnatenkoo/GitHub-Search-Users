@@ -1,15 +1,19 @@
 import { FC } from 'react';
 import { IRepos } from '../../../types/types';
 import { checkTextValue, setIconPath } from '../../../utils';
+import AddFavoriteBtn from '../../ui/buttons/AddFavoriteBtn';
+import RemoveFavoriteBtn from '../../ui/buttons/RemoveFavoriteBtn';
 
 import dayjs from 'dayjs';
-
+import { useAppSelector } from '../../../hooks';
 interface IUserReposProps {
   repos: Array<IRepos> | undefined;
   error: boolean;
 }
 
 const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
+  const { favorites } = useAppSelector((state) => state.user);
+
   if (error) return <p className="font-medium text-red-400">Error repositories loading...</p>;
 
   return (
@@ -23,7 +27,7 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
           repos.map((i) => (
             <li
               key={i.id}
-              className="mb-2 p-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all"
+              className="relative mb-2 p-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all"
             >
               <a href={i.html_url} className="flex items-center" target="_blank" rel="noreferrer">
                 <div className="mr-5 text-center text-sm w-[65px] shrink ">
@@ -60,6 +64,13 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error }) => {
                   </div>
                 </article>
               </a>
+              <div className="absolute bottom-3 right-3">
+                {favorites.some((favRepo) => favRepo.id === i.id) ? (
+                  <RemoveFavoriteBtn id={i.id} />
+                ) : (
+                  <AddFavoriteBtn item={i} />
+                )}
+              </div>
             </li>
           ))}
       </ul>

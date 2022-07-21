@@ -1,6 +1,6 @@
 import { FC, MouseEvent } from 'react';
-import { useAppDispatch } from '../../hooks';
-import { REMOVE_FAVORITE_REPO } from '../../store/github/github.slice';
+import { useAppDispatch } from '../../../hooks';
+import { REMOVE_FAVORITE_REPO } from '../../../store/github/github.slice';
 interface IBtnProps {
   id: number;
 }

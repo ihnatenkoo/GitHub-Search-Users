@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector } from '../../hooks';
 import { useLazyGetUserInfoQuery, useLazyGetUserReposQuery } from '../../store/github/github.api';
-import { Spinner } from '../Spinner/Spinner';
+import { Spinner } from '../ui/Spinner/Spinner';
 import UserInfo from './UserInfo/UserInfo';
 import UserRepos from './UserRepos/UserRepos';
 

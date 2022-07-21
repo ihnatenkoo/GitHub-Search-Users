@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { useDebounce } from '../../hooks/debounce.hook';
-import { SET_SELECTED_USER } from '../../store/user/userSlice';
+import { SET_SELECTED_USER } from '../../store/github/github.slice';
 import { useSearchUsersQuery } from '../../store/github/github.api';
 
 const SearchPanel: FC = () => {
