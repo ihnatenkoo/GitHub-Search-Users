@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { ISingleUser } from '../../../../../types/types';
 import { checkTextValue } from '../../../../../utils';
 interface IUserInfoProps {
@@ -7,14 +7,15 @@ interface IUserInfoProps {
 }
 
 const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
-  const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user!;
+  const [isFav, setIsFav] = useState(false);
+  const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user;
 
   if (error) return <p className="mr-10 font-medium text-red-400">Error user loading...</p>;
 
   return (
-    <div className=" w-[550px] max-w-full">
+    <div className="w-[550px] max-w-full">
       <h3 className="font-bold text-gray-600 mb-3 text-lg">User Information</h3>
-      <div className="flex flex-wrap">
+      <div className="relative flex flex-wrap">
         <img
           src={avatar_url}
           alt={`${name} avatar`}
@@ -63,6 +64,14 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
             </a>
           </li>
         </ul>
+        <div className="absolute top-2 left-2 text-red-700  cursor-pointer bg-zinc-300  rounded-full select-none">
+          <span
+            onClick={() => setIsFav((prev) => !prev)}
+            className="material-icons-outlined text-4xl p-1.5"
+          >
+            {isFav ? 'favorite' : 'favorite_border'}
+          </span>
+        </div>
       </div>
     </div>
   );

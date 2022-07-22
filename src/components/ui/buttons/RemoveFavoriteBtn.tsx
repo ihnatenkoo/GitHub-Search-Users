@@ -16,7 +16,7 @@ const RemoveFavoriteBtn: FC<IBtnProps> = ({ id }) => {
   return (
     <button
       onClick={clickHandler}
-      className="px-5 py-2 rounded bg-red-400  text-white hover:bg-red-500 transition-all"
+      className="px-5 py-2 rounded bg-red-500  text-white hover:bg-red-600 transition-all"
     >
       Remove
     </button>

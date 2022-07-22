@@ -44,16 +44,14 @@ const SearchPanel: FC = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
       {search && (
-        <button>
-          <img
-            src="/images/icons/close.svg"
-            alt="close icon"
-            className="absolute z-10 top-3 right-3 w-[20px] h-[20px] fill-gray-500 cursor-pointer animate-in"
-            onClick={clearInputHandler}
-          />
+        <button
+          onClick={clearInputHandler}
+          className="w-[25px] h-[25px] absolute z-10 top-2.5 right-3  text-gray-500 cursor-pointer animate-in"
+        >
+          <span className="material-icons-outlined ">close</span>
         </button>
       )}
-      <ul className="list-none absolute top-[42px] left-0 right-0 max-h-[200px] shadow-md bg-white overflow-y-scroll">
+      <ul className="list-none absolute top-[42px] left-0 right-0 max-h-[200px] shadow-md bg-white overflow-y-scroll z-10">
         {showDropdown &&
           users?.map((user) => (
             <li
@@ -67,8 +65,8 @@ const SearchPanel: FC = () => {
       </ul>
 
       <div className="text-center py-2 absolute top-[5px] right-[10px]">
-        {isFetching && !isError && <p className="mr-8 ">Loading...</p>}
-        {isError && !isFetching && <h2 className="mr-8 text-red-600 ">Something went wrong...</h2>}
+        {isFetching && !isError && <p className="mr-10 ">Loading...</p>}
+        {isError && !isFetching && <h2 className="mr-10 text-red-600 ">Something went wrong...</h2>}
       </div>
     </div>
   );
