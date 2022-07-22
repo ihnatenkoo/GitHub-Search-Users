@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { ISingleUser } from '../../../types/types';
-import { checkTextValue } from '../../../utils/';
+import { ISingleUser } from '../../../../../types/types';
+import { checkTextValue } from '../../../../../utils';
 interface IUserInfoProps {
   user: ISingleUser;
   error: boolean;

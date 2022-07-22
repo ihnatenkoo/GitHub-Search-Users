@@ -15,9 +15,9 @@ const ReposList: FC<IReposList> = ({ repos }) => {
   const { favorites } = useAppSelector((state) => state.user);
 
   return (
-    <ul className="h-[390px] overflow-hidden overflow-y-auto">
+    <ul className="h-[500px] overflow-hidden overflow-y-auto">
       {repos?.length === 0 && (
-        <p className="font-medium text-red-400">List of repositories is empty</p>
+        <p className="italic font-medium text-red-300">List of repositories is empty</p>
       )}
       {repos &&
         repos.map((i) => (
@@ -36,7 +36,7 @@ const ReposList: FC<IReposList> = ({ repos }) => {
               </div>
 
               <article className="w-[425px]">
-                <p className="mb-2 font-bold">{i.name}</p>
+                <p className="mb-2 font-bold">{i.full_name}</p>
                 <p className="mb-2 font-light">
                   {i.description?.length > 55 ? i.description.slice(0, 55) + '...' : i.description}
                 </p>

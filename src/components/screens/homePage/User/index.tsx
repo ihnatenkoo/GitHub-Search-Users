@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
-import { useAppSelector } from '../../hooks';
-import { useLazyGetUserInfoQuery, useLazyGetUserReposQuery } from '../../store/github/github.api';
-import { Spinner } from '../ui/Spinner/Spinner';
+import { useAppSelector } from '../../../../hooks';
+import {
+  useLazyGetUserInfoQuery,
+  useLazyGetUserReposQuery
+} from '../../../../store/github/github.api';
+import { Spinner } from '../../../ui/Spinner/Spinner';
 import UserInfo from './UserInfo/UserInfo';
 import UserRepos from './UserRepos/UserRepos';
 
@@ -22,7 +25,7 @@ const User = () => {
   }
 
   return (
-    <div className="flex justify-center flex-wrap max-w-full h-[300px] max-h-full">
+    <div className="flex justify-center flex-wrap max-w-full">
       {user && (
         <>
           <UserInfo user={user} error={isUserError} />

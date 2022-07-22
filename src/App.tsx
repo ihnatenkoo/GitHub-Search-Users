@@ -5,12 +5,12 @@ import Navigation from './components/Navigation/Navigation';
 
 const App = () => {
   return (
-    <main className="bg-gray-50 h-screen">
+    <main className="bg-gray-50 min-h-screen h-max">
       <Navigation />
       <section className="mt-10 px-2">
         <Routes>
           <Route path="" element={<HomePage />} />
-          <Route path="/favorite" element={<FavoritesPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
       </section>
     </main>
