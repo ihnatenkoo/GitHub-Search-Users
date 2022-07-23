@@ -1,0 +1,22 @@
+.btn {
+  display: none;
+  animation: opacity 0.3s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+article:hover .btn {
+  display: block;
+}
+
+.btn:hover {
+  transform: rotate(90deg);
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

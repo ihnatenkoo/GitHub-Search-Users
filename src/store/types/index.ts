@@ -1,7 +1,7 @@
-import { IRepos } from '../../types/types';
+import { IFavUser, IRepos } from '../../types/types';
 interface IFavorites {
   repos: Array<IRepos>;
-  users: any;
+  users: Array<IFavUser>;
 }
 export interface IUserInitialState {
   selectedUser: string;

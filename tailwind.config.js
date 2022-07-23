@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -13,5 +15,14 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    plugin(({ addComponents, addUtilities, theme }) => {
+      addComponents({
+        '.background-gradient-gray': {
+          background:
+            'linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 1%, rgba(0, 0, 0, 0) 100%)'
+        }
+      });
+    })
+  ]
 };

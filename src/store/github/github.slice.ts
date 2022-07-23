@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { ActionTypes, IUserInitialState } from '../types';
-import { IRepos } from '../../types/types';
+import { IFavUser, IRepos } from '../../types/types';
 
 const LS_FAV_REPOS_KEY = 'favorite_repos';
 const LS_FAV_USERS_KEY = 'favorite_users';
@@ -21,12 +21,14 @@ const userSlice = createSlice({
     [ActionTypes.SET_SELECTED_USER]: (state, action: PayloadAction<string>) => {
       state.selectedUser = action.payload;
     },
-    [ActionTypes.ADD_FAVORITE_USER]: (state, action: PayloadAction<any>) => {
+    [ActionTypes.ADD_FAVORITE_USER]: (state, action: PayloadAction<IFavUser>) => {
       state.favorites.users.push(action.payload);
       localStorage.setItem(LS_FAV_USERS_KEY, JSON.stringify(state.favorites.users));
     },
     [ActionTypes.REMOVE_FAVORITE_USER]: (state, action: PayloadAction<string>) => {
-      state.favorites.users = state.favorites.users.filter((i: any) => i.login !== action.payload);
+      state.favorites.users = state.favorites.users.filter(
+        (i: IFavUser) => i.login !== action.payload
+      );
       localStorage.setItem(LS_FAV_USERS_KEY, JSON.stringify(state.favorites.users));
     },
     [ActionTypes.ADD_FAVORITE_REPO]: (state, action: PayloadAction<IRepos>) => {

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/';
 import { ADD_FAVORITE_USER, REMOVE_FAVORITE_USER } from '../../../store/github/github.slice';
-import { ISingleUser } from '../../../types/types';
+import { IFavUser, ISingleUser } from '../../../types/types';
 import { checkTextValue } from '../../../utils';
 interface IUserInfoProps {
   user: ISingleUser;
@@ -10,12 +10,28 @@ interface IUserInfoProps {
 
 const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   const favUsers = useAppSelector((state) => state.user.favorites.users);
-  const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user;
-  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: any) => i.login === login));
-
-  const favUserData = {
+  const {
     login,
-    avatar_url
+    avatar_url,
+    bio,
+    location,
+    name,
+    public_repos,
+    blog,
+    html_url,
+    followers,
+    following
+  } = user;
+
+  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: IFavUser) => i.login === login));
+
+  const favUserData: IFavUser = {
+    login,
+    name,
+    avatar_url,
+    public_repos,
+    followers,
+    following
   };
 
   const dispatch = useAppDispatch();

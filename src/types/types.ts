@@ -62,7 +62,7 @@ export interface ISingleUser {
 }
 
 export interface IRepos {
-  owner: Owner;
+  owner: IReposOwner;
   id: number;
   node_id: string;
   name: string;
@@ -134,7 +134,7 @@ export interface IRepos {
   allow_forking: boolean;
   is_template: boolean;
   web_commit_signoff_required: boolean;
-  topics: any[];
+  topics: Array<any>;
   visibility: string;
   forks: number;
   open_issues: number;
@@ -142,7 +142,7 @@ export interface IRepos {
   default_branch: string;
 }
 
-export interface Owner {
+export interface IReposOwner {
   login: string;
   id: number;
   node_id: string;
@@ -161,4 +161,12 @@ export interface Owner {
   received_events_url: string;
   type: string;
   site_admin: boolean;
+}
+export interface IFavUser {
+  login: string;
+  name?: string | null;
+  avatar_url: string;
+  public_repos: number;
+  followers: number;
+  following: number;
 }

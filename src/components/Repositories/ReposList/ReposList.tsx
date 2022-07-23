@@ -13,18 +13,17 @@ interface IReposList {
 
 const ReposList: FC<IReposList> = ({ repos }) => {
   const { repos: favRepos } = useAppSelector((state) => state.user.favorites);
-  console.log(favRepos);
 
   return (
-    <ul className="h-[500px] overflow-hidden overflow-y-auto">
+    <ul>
       {repos?.length === 0 && (
-        <p className="italic font-medium text-red-300">List of repositories is empty</p>
+        <p className="font-medium text-red-300">List of repositories is empty</p>
       )}
       {repos &&
         repos.map((i) => (
           <li
             key={i.id}
-            className="relative mb-2 p-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all"
+            className="relative mb-2 p-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all background-gradient-gray h-[115px]"
           >
             <a href={i.html_url} className="flex items-center" target="_blank" rel="noreferrer">
               <div className="mr-5 text-center text-sm w-[65px] shrink ">
