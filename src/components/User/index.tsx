@@ -1,12 +1,9 @@
 import { useEffect } from 'react';
-import { useAppSelector } from '../../../../hooks';
-import {
-  useLazyGetUserInfoQuery,
-  useLazyGetUserReposQuery
-} from '../../../../store/github/github.api';
-import { Spinner } from '../../../ui/Spinner/Spinner';
+import { useAppSelector } from '../../hooks';
+import { useLazyGetUserInfoQuery, useLazyGetUserReposQuery } from '../../store/github/github.api';
+import { Spinner } from '../ui/Spinner/Spinner';
 import UserInfo from './UserInfo/UserInfo';
-import UserRepos from './UserRepos/UserRepos';
+import Repositories from '../Repositories';
 
 const User = () => {
   const { selectedUser } = useAppSelector((state) => state.user);
@@ -29,7 +26,7 @@ const User = () => {
       {user && (
         <>
           <UserInfo user={user} error={isUserError} />
-          <UserRepos repos={repos} error={isReposError} />
+          <Repositories repos={repos} error={isReposError} title="Repositories" />
         </>
       )}
     </div>

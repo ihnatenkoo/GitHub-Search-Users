@@ -1,5 +1,5 @@
-import SearchPanel from '../components/screens/homePage/SearchPanel/SearchPanel';
-import User from '../components/screens/homePage/User';
+import SearchPanel from '../components/SearchPanel/SearchPanel';
+import User from '../components/User/';
 
 const HomePage = () => {
   return (

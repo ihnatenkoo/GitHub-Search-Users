@@ -1,14 +1,29 @@
 import { FC, useState } from 'react';
-import { ISingleUser } from '../../../../../types/types';
-import { checkTextValue } from '../../../../../utils';
+import { useAppDispatch, useAppSelector } from '../../../hooks/';
+import { ADD_FAVORITE_USER, REMOVE_FAVORITE_USER } from '../../../store/github/github.slice';
+import { ISingleUser } from '../../../types/types';
+import { checkTextValue } from '../../../utils';
 interface IUserInfoProps {
   user: ISingleUser;
   error: boolean;
 }
 
 const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
-  const [isFav, setIsFav] = useState(false);
+  const favUsers = useAppSelector((state) => state.user.favorites.users);
   const { login, avatar_url, bio, location, name, public_repos, blog, html_url } = user;
+  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: any) => i.login === login));
+
+  const favUserData = {
+    login,
+    avatar_url
+  };
+
+  const dispatch = useAppDispatch();
+
+  const favClickHandler = (login: string) => {
+    isFav ? dispatch(REMOVE_FAVORITE_USER(login)) : dispatch(ADD_FAVORITE_USER(favUserData));
+    setIsFav((prev) => !prev);
+  };
 
   if (error) return <p className="mr-10 font-medium text-red-400">Error user loading...</p>;
 
@@ -64,14 +79,14 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
             </a>
           </li>
         </ul>
-        <div className="absolute top-2 left-2 text-red-700  cursor-pointer bg-zinc-300  rounded-full select-none">
-          <span
-            onClick={() => setIsFav((prev) => !prev)}
-            className="material-icons-outlined text-4xl p-1.5"
-          >
+        <button
+          onClick={() => favClickHandler(login)}
+          className="absolute top-2 left-2 text-red-700  cursor-pointer bg-zinc-200  rounded-full select-none"
+        >
+          <span className="material-icons-outlined text-4xl p-1.5">
             {isFav ? 'favorite' : 'favorite_border'}
           </span>
-        </div>
+        </button>
       </div>
     </div>
   );
