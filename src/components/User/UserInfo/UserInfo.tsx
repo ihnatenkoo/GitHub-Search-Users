@@ -31,7 +31,8 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
     avatar_url,
     public_repos,
     followers,
-    following
+    following,
+    html_url
   };
 
   const dispatch = useAppDispatch();

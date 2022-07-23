@@ -21,6 +21,15 @@ module.exports = {
         '.background-gradient-gray': {
           background:
             'linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 1%, rgba(0, 0, 0, 0) 100%)'
+        },
+        '.position-absolute-center': {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)'
+        },
+        '.transition-all-03': {
+          transition: 'all .25s linear'
         }
       });
     })
