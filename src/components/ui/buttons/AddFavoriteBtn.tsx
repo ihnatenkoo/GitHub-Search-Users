@@ -17,7 +17,7 @@ const AddFavoriteBtn: FC<IBtnProps> = ({ item }) => {
   return (
     <button
       onClick={clickHandler}
-      className="px-5 py-2 rounded bg-amber-400  text-white hover:bg-amber-500 transition-all"
+      className="px-4 sml:px-5 py-2 rounded bg-amber-400  text-white hover:bg-amber-500 transition-all"
     >
       Add
     </button>

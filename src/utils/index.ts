@@ -32,6 +32,12 @@ export const setIconPath = (text: string): string => {
     case 'Java':
       return '/images/languages/java.png';
 
+    case 'C++':
+      return '/images/languages/cplus.png';
+
+    case 'C':
+      return '/images/languages/c.png';
+
     default:
       return '/images/languages/others.webp';
   }

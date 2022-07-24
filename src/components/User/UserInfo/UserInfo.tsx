@@ -45,15 +45,27 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   if (error) return <p className="mr-10 font-medium text-red-400">Error user loading...</p>;
 
   return (
-    <div className="w-[550px] max-w-full">
-      <h3 className="font-bold text-gray-600 mb-3 text-lg">User Information</h3>
-      <div className="relative flex flex-wrap">
-        <img
-          src={avatar_url}
-          alt={`${name} avatar`}
-          className="mr-3 mb-3 max-w-full w-[220px] h-[220px] rounded-md"
-        />
-        <ul className="text-gray-600 font-bold max-w-[300px]">
+    <div className="w-[550px] max-w-full mb-5">
+      <h3 className="font-bold text-gray-600 mb-2 text-lg text-center sml:text-left">
+        User Information
+      </h3>
+      <div className="flex flex-wrap justify-center">
+        <div className="sml:mr-3 mb-3 relative w-[220px] h-[220px]">
+          <img
+            src={avatar_url}
+            alt={`${name} avatar`}
+            className="mb-2 max-w-full w-full h-auto rounded-md"
+          />
+          <button
+            onClick={() => favClickHandler(login)}
+            className="absolute top-2 left-2 text-red-700  cursor-pointer bg-zinc-200  rounded-full select-none"
+          >
+            <span className="material-icons-outlined text-4xl p-1.5">
+              {isFav ? 'favorite' : 'favorite_border'}
+            </span>
+          </button>
+        </div>
+        <ul className="text-gray-600 font-bold max-w-[220px] sml:max-w-[300px]">
           <li className="mb-2">
             Login: <span className="font-normal text-gray-500">{login}</span>
           </li>
@@ -96,14 +108,6 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
             </a>
           </li>
         </ul>
-        <button
-          onClick={() => favClickHandler(login)}
-          className="absolute top-2 left-2 text-red-700  cursor-pointer bg-zinc-200  rounded-full select-none"
-        >
-          <span className="material-icons-outlined text-4xl p-1.5">
-            {isFav ? 'favorite' : 'favorite_border'}
-          </span>
-        </button>
       </div>
     </div>
   );

@@ -12,16 +12,18 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="mr-10 w-[475px] max-w-full h-[650px] overflow-hidden">
-      <h3 className="mb-3 font-bold text-gray-600  text-lg">Favorite Users</h3>
-      <div className="flex flex-wrap max-w-full">
+    <div className="mb-5 sml:mr-10 w-[450px] max-w-full">
+      <h3 className="max-w-full text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
+        Favorite Users
+      </h3>
+      <div className="grid justify-items-center sml:grid-cols-2 gap-1.5 max-w-full">
         {users?.length === 0 && (
           <p className="font-medium text-red-300">List of favorite users is empty</p>
         )}
         {users &&
           users.map((user: IFavUser) => (
             <article
-              className="fav-user relative mb-2 mr-3 border-2 border-gray-200 rounded-xl overflow-hidden w-[220px] hover:shadow-md transition-all-03"
+              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-[220px] xl:hover:shadow-md transition-all-03"
               key={user.login}
             >
               <header className="px-5 pt-3 pb-3.5 relative flex items-center background-gradient-gray">
@@ -50,7 +52,7 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
                 </li>
               </ul>
 
-              <nav className="nav w-2/3 flex justify-center flex-col position-absolute-center opacity-0 transition-all-03 z-10">
+              <nav className="nav hidden xl:flex w-2/3 justify-center flex-col position-absolute-center opacity-0 transition-all-03 z-10 ">
                 <button className="mb-3 px-5 py-2.5 rounded-md bg-amber-400  text-white hover:bg-amber-500 transition-all">
                   <a href={user.html_url} target="_blank" rel="noreferrer">
                     View GitHub
@@ -63,6 +65,12 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
                   Remove User
                 </button>
               </nav>
+              <button
+                className="w-[25px] h-[25px] absolute top-1.5 right-1.5 text-gray-300 cursor-pointer xl:hidden"
+                onClick={() => dispatch(REMOVE_FAVORITE_USER(user.login))}
+              >
+                <span className="material-icons-outlined ">close</span>
+              </button>
             </article>
           ))}
       </div>

@@ -3,6 +3,7 @@
 }
 
 .fav-user:after {
+  display: none;
   content: '';
   width: 100%;
   height: 100%;
@@ -17,4 +18,10 @@
 
 .fav-user:hover::after {
   opacity: 1;
+}
+
+@media (min-width: 1280px) {
+  .fav-user:after {
+    display: block;
+  }
 }

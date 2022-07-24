@@ -3,6 +3,10 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    screens: {
+      sml: '575px',
+      xl: '1280px'
+    },
     extend: {
       keyframes: {
         in: {

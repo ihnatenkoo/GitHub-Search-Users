@@ -35,7 +35,7 @@ const SearchPanel: FC = () => {
   }, [debounced, users]);
 
   return (
-    <div className="mx-auto mb-6 relative w-[560px] max-w-full">
+    <div className="mx-auto mb-5 relative w-[560px] max-w-full">
       <input
         type="text"
         className="border py-2 px-4 w-full h-[42px] rounded-md"
