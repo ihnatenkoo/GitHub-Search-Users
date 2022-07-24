@@ -17,7 +17,9 @@ const ReposList: FC<IReposList> = ({ repos }) => {
   return (
     <ul className="h-[510px] overflow-hidden overflow-y-auto">
       {repos?.length === 0 && (
-        <p className="font-medium text-red-300">List of repositories is empty</p>
+        <p className="font-medium text-red-300 text-center sml:text-left">
+          Repository list is empty
+        </p>
       )}
       {repos &&
         repos.map((i) => (

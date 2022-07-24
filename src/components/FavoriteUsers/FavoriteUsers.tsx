@@ -13,22 +13,22 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
 
   return (
     <div className="mb-5 sml:mr-10 w-[450px] max-w-full">
-      <h3 className="max-w-full text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
+      <h3 className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
         Favorite Users
       </h3>
-      <div className="grid justify-items-center sml:grid-cols-2 gap-1.5 max-w-full">
-        {users?.length === 0 && (
-          <p className="font-medium text-red-300">List of favorite users is empty</p>
-        )}
+      {users?.length === 0 && (
+        <p className="font-medium text-red-300 text-center sml:text-left">User list is empty</p>
+      )}
+      <div className="grid justify-items-center sml:grid-cols-2 gap-3 sml:gap-2 max-w-full">
         {users &&
           users.map((user: IFavUser) => (
             <article
-              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-[220px] xl:hover:shadow-md transition-all-03"
+              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-3/4 sml:w-[220px] xl:hover:shadow-md transition-all-03"
               key={user.login}
             >
-              <header className="px-5 pt-3 pb-3.5 relative flex items-center background-gradient-gray">
+              <header className="px-5 pt-3 pb-1 relative flex items-center background-gradient-gray">
                 <img
-                  className="mr-3 w-[50px] h-[50px] rounded-full"
+                  className="mr-3 w-[65px] h-[65px] rounded-full"
                   src={user.avatar_url}
                   alt="user avatar"
                 />
