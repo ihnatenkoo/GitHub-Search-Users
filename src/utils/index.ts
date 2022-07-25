@@ -1,3 +1,5 @@
+import { IFavUser } from '../types/types';
+
 export const checkTextValue = (text: string | null | undefined): string => {
   if (text) return text;
   return 'No info';
@@ -41,4 +43,16 @@ export const setIconPath = (text: string): string => {
     default:
       return '/images/languages/others.webp';
   }
+};
+
+export const paginate = (users: Array<IFavUser>, pageIndex: number): IFavUser[] => {
+  const itemsPerPage = 6;
+  const pages = Math.ceil(users.length / itemsPerPage);
+
+  const usersPage = Array.from({ length: pages }, (_, index) => {
+    const start = index * itemsPerPage;
+    return users.slice(start, start + itemsPerPage);
+  });
+
+  return usersPage[pageIndex];
 };

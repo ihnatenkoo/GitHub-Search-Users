@@ -15,7 +15,7 @@ const ReposList: FC<IReposList> = ({ repos }) => {
   const { repos: favRepos } = useAppSelector((state) => state.user.favorites);
 
   return (
-    <ul className="h-[510px] overflow-hidden overflow-y-auto">
+    <ul className="h-[640px] overflow-hidden overflow-y-auto">
       {repos?.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">
           Repository list is empty

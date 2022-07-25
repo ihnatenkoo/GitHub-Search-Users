@@ -55,7 +55,7 @@ const SearchPanel: FC = () => {
         {showDropdown &&
           users?.map((user) => (
             <li
-              className="py-2 px-4 hover:bg-gray-500 hover:text-white transition-colors cursor-pointer"
+              className="py-3.5 sml:py-2  px-4 hover:bg-gray-500 hover:text-white transition-colors cursor-pointer"
               key={user.id}
               onClick={() => getUserInfo(user.login)}
             >

@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { REMOVE_FAVORITE_USER } from '../../store/github/github.slice';
 import { IFavUser } from '../../types/types';
+import { paginate } from '../../utils';
 import './FavoriteUsers.css';
 
 interface IFavUsers {
@@ -9,19 +10,28 @@ interface IFavUsers {
 }
 
 const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
+  const [pageIndex, setPageIndex] = useState<number>(0);
+  const [usersPagesArr, setUsersPagesArr] = useState<Array<IFavUser>>([]);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setUsersPagesArr(paginate(users, pageIndex));
+  }, [pageIndex, users]);
 
   return (
     <div className="mb-5 sml:mr-10 w-[450px] max-w-full">
-      <h3 className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
+      <h3
+        className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg"
+        onClick={() => setPageIndex((prev) => prev + 1)}
+      >
         Favorite Users
       </h3>
-      {users?.length === 0 && (
+      {usersPagesArr?.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">User list is empty</p>
       )}
       <div className="grid justify-items-center sml:grid-cols-2 gap-3 sml:gap-2 max-w-full">
-        {users &&
-          users.map((user: IFavUser) => (
+        {usersPagesArr &&
+          usersPagesArr.map((user: IFavUser) => (
             <article
               className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-3/4 sml:w-[220px] xl:hover:shadow-md transition-all-03"
               key={user.login}
