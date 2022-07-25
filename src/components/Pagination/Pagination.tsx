@@ -8,13 +8,19 @@ interface IPagination {
 }
 
 const Pagination: FC<IPagination> = ({ pageIndex, setPageIndex, usersPagesArr }) => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const nextPage = (pageIndex: number) => {
+    scrollToTop();
     const page = pageIndex + 1;
     if (page > usersPagesArr.length) return;
     setPageIndex((prev) => prev + 1);
   };
 
   const prevPage = (pageIndex: number) => {
+    scrollToTop();
     const page = pageIndex - 1;
     if (page === 0) return;
     setPageIndex((prev) => prev - 1);

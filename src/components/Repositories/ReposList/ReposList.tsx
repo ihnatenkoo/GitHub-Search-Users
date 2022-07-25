@@ -28,15 +28,13 @@ const ReposList: FC<IReposList> = ({ repos }) => {
             className="relative mb-3 sml:mb-2 px-1.5 py-2 sml:px-3 sml:pt-4 sml:pb-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all background-gradient-gray"
           >
             <a href={i.html_url} className="flex items-center" target="_blank" rel="noreferrer">
-              <div className="flex items-center flex-col sml:mr-5 mr-2 text-center text-sm shrink ">
+              <div className="flex items-center flex-col sml:mr-5 mr-2 text-center text-sm max-w-[75px]">
                 <img
                   className="sml:mb-1 w-[50px] h-auto rounded-xl"
                   src={setIconPath(i.language)}
                   alt={`${i.language} icon`}
                 />
-                <span className="min-w-[65px] text-sm sml:text-base">
-                  {checkTextValue(i.language)}
-                </span>
+                <span className="min-w-[65px] text-sm">{checkTextValue(i.language)}</span>
               </div>
 
               <article className="w-[425px]">
