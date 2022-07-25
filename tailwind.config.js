@@ -8,6 +8,9 @@ module.exports = {
       xl: '1280px'
     },
     extend: {
+      gridTemplateRows: {
+        layout195px: 'repeat(2, minmax(195px, 1fr))'
+      },
       keyframes: {
         in: {
           from: { opacity: 0, transform: 'translateX(20px)' },

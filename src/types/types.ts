@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from 'react';
+
+export type TypeSetState<T> = Dispatch<SetStateAction<T>>;
 export interface IUsers {
   login: string;
   id: number;

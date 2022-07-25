@@ -45,8 +45,8 @@ export const setIconPath = (text: string): string => {
   }
 };
 
-export const paginate = (users: Array<IFavUser>, pageIndex: number): IFavUser[] => {
-  const itemsPerPage = 6;
+export const paginate = (users: Array<IFavUser>): IFavUser[][] => {
+  const itemsPerPage = 4;
   const pages = Math.ceil(users.length / itemsPerPage);
 
   const usersPage = Array.from({ length: pages }, (_, index) => {
@@ -54,5 +54,5 @@ export const paginate = (users: Array<IFavUser>, pageIndex: number): IFavUser[] 
     return users.slice(start, start + itemsPerPage);
   });
 
-  return usersPage[pageIndex];
+  return usersPage;
 };

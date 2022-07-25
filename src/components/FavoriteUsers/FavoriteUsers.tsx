@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../hooks';
 import { REMOVE_FAVORITE_USER } from '../../store/github/github.slice';
 import { IFavUser } from '../../types/types';
 import { paginate } from '../../utils';
+import Pagination from '../Pagination/Pagination';
 import './FavoriteUsers.css';
 
 interface IFavUsers {
@@ -10,30 +11,29 @@ interface IFavUsers {
 }
 
 const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
-  const [pageIndex, setPageIndex] = useState<number>(0);
-  const [usersPagesArr, setUsersPagesArr] = useState<Array<IFavUser>>([]);
+  const [pageIndex, setPageIndex] = useState<number>(1);
+  const [usersPagesArr, setUsersPagesArr] = useState<IFavUser[][]>([]);
   const dispatch = useAppDispatch();
 
+  const userList = usersPagesArr[pageIndex - 1];
+
   useEffect(() => {
-    setUsersPagesArr(paginate(users, pageIndex));
+    setUsersPagesArr(paginate(users));
   }, [pageIndex, users]);
 
   return (
     <div className="mb-5 sml:mr-10 w-[450px] max-w-full">
-      <h3
-        className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg"
-        onClick={() => setPageIndex((prev) => prev + 1)}
-      >
+      <h3 className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
         Favorite Users
       </h3>
       {usersPagesArr?.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">User list is empty</p>
       )}
-      <div className="grid justify-items-center sml:grid-cols-2 gap-3 sml:gap-2 max-w-full">
-        {usersPagesArr &&
-          usersPagesArr.map((user: IFavUser) => (
+      <div className="grid justify-items-center sml:grid-rows-layout195px sml:grid-cols-2 gap-3 sml:gap-2 max-w-full">
+        {userList &&
+          userList.map((user: IFavUser) => (
             <article
-              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-3/4 sml:w-[220px] xl:hover:shadow-md transition-all-03"
+              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-3/4 sml:w-[220px] h-min xl:hover:shadow-md transition-all-03"
               key={user.login}
             >
               <header className="px-5 pt-3 pb-1 relative flex items-center background-gradient-gray">
@@ -56,7 +56,7 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
                   <span className="text-gray-400">Followers:</span>
                   <span>{user.followers}</span>
                 </li>
-                <li className=" px-5 py-2.5 flex justify-between border-b-2 border-gray-100">
+                <li className="px-5 pt-2.5 pb-4 flex justify-between">
                   <span className="text-gray-400">Following:</span>
                   <span>{user.following}</span>
                 </li>
@@ -84,6 +84,14 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
             </article>
           ))}
       </div>
+
+      {usersPagesArr?.length > 1 && (
+        <Pagination
+          setPageIndex={setPageIndex}
+          usersPagesArr={usersPagesArr}
+          pageIndex={pageIndex}
+        />
+      )}
     </div>
   );
 };
