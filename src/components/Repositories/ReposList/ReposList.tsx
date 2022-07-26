@@ -25,7 +25,7 @@ const ReposList: FC<IReposList> = ({ repos }) => {
         repos.map((i) => (
           <li
             key={i.id}
-            className="relative mb-3 sml:mb-2 px-1.5 py-2 sml:px-3 sml:pt-4 sml:pb-3 bg-white border rounded-xl cursor-pointer hover:bg-gray-200 hover:shadow-md transition-all background-gradient-gray"
+            className="relative mb-3 sml:mb-2 px-1.5 py-2 sml:px-3 sml:pt-4 sml:pb-3 bg-white border rounded-xl cursor-pointer xl:hover:bg-gray-200 xl:hover:shadow-md transition-all background-gradient-gray"
           >
             <a href={i.html_url} className="flex items-center" target="_blank" rel="noreferrer">
               <div className="flex items-center flex-col sml:mr-5 mr-2 text-center text-sm max-w-[75px]">

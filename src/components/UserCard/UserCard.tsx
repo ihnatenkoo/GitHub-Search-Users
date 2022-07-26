@@ -48,6 +48,15 @@ const UserCard: FC<IUserCard> = ({ userList = [] }) => {
                 </li>
               </ul>
 
+              <a
+                href={user.html_url}
+                target="_blank"
+                rel="noreferrer"
+                className="xl:hidden pb-2 text-sky-500 block text-sm font-bold text-center"
+              >
+                Visit on GitHub
+              </a>
+
               <nav className="nav hidden xl:flex w-2/3 justify-center flex-col position-absolute-center opacity-0 transition-all-03 z-10 ">
                 <button className="mb-3 px-5 py-2.5 rounded-md bg-amber-400  text-white hover:bg-amber-500 transition-all">
                   <a href={user.html_url} target="_blank" rel="noreferrer">
@@ -61,6 +70,7 @@ const UserCard: FC<IUserCard> = ({ userList = [] }) => {
                   Remove User
                 </button>
               </nav>
+
               <button
                 className="w-[25px] h-[25px] absolute top-1.5 right-1.5 text-gray-300 cursor-pointer xl:hidden"
                 onClick={() => dispatch(REMOVE_FAVORITE_USER(user.login))}
