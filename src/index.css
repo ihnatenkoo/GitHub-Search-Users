@@ -1,5 +1,5 @@
 @import 'material-icons/iconfont/material-icons.css';
-@import 'overlayscrollbars/css/OverlayScrollbars.css';
+@import 'overlayscrollbars/css/OverlayScrollbars.min.css';
 
 @tailwind base;
 @tailwind components;
@@ -7,4 +7,21 @@
 
 body {
   line-height: 1;
+}
+
+main .os-theme-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
+  min-height: 125px;
+  max-height: 125px;
+  min-width: 5px;
+  max-width: 5px;
+  background: rgb(107 114 128);
+}
+
+main .os-theme-dark > .os-scrollbar-vertical {
+  background: rgba(228, 225, 225, 0.75);
+  min-width: 7px;
+  max-width: 7px;
+  padding: 1px;
+  height: 99%;
+  border-radius: 5px;
 }

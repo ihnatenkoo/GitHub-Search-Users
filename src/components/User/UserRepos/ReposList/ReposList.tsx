@@ -6,7 +6,6 @@ import AddFavoriteBtn from '../../../ui/buttons/AddFavoriteBtn';
 import RemoveFavoriteBtn from '../../../ui/buttons/RemoveFavoriteBtn';
 
 import dayjs from 'dayjs';
-
 interface IReposList {
   repos: Array<IRepos> | undefined;
 }
@@ -15,7 +14,7 @@ const ReposList: FC<IReposList> = ({ repos }) => {
   const { repos: favRepos } = useAppSelector((state) => state.user.favorites);
 
   return (
-    <ul className="h-[640px] overflow-hidden overflow-y-auto">
+    <ul className="h-[640px] mr-4">
       {repos?.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">
           Repository list is empty
