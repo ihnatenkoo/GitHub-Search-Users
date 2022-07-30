@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IRepos } from '../../types/types';
+import { IRepos } from '../../../types/types';
 import ReposList from './ReposList/ReposList';
 interface IUserReposProps {
   repos: Array<IRepos> | undefined;

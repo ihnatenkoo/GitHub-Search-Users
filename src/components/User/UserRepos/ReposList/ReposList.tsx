@@ -1,9 +1,9 @@
-import { useAppSelector } from '../../../hooks';
-import { checkTextValue, setIconPath } from '../../../utils';
+import { useAppSelector } from '../../../../hooks';
+import { checkTextValue, setIconPath } from '../../../../utils';
 import { FC } from 'react';
-import { IRepos } from '../../../types/types';
-import AddFavoriteBtn from '../../ui/buttons/AddFavoriteBtn';
-import RemoveFavoriteBtn from '../../ui/buttons/RemoveFavoriteBtn';
+import { IRepos } from '../../../../types/types';
+import AddFavoriteBtn from '../../../ui/buttons/AddFavoriteBtn';
+import RemoveFavoriteBtn from '../../../ui/buttons/RemoveFavoriteBtn';
 
 import dayjs from 'dayjs';
 

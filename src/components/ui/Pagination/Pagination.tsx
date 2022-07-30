@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IFavUser, TypeSetState } from '../../types/types';
+import { IFavUser, TypeSetState } from '../../../types/types';
 
 interface IPagination {
   setPageIndex: TypeSetState<number>;

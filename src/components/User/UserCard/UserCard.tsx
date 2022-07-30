@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useAppDispatch } from '../../hooks';
-import { REMOVE_FAVORITE_USER } from '../../store/github/github.slice';
-import { IFavUser } from '../../types/types';
+import { useAppDispatch } from '../../../hooks';
+import { REMOVE_FAVORITE_USER } from '../../../store/github/github.slice';
+import { IFavUser } from '../../../types/types';
 
 interface IUserCard {
   userList: Array<IFavUser>;

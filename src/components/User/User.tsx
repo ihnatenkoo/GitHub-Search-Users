@@ -3,7 +3,7 @@ import { useAppSelector } from '../../hooks';
 import { useLazyGetUserInfoQuery, useLazyGetUserReposQuery } from '../../store/github/github.api';
 import { Spinner } from '../ui/Spinner/Spinner';
 import UserInfo from './UserInfo/UserInfo';
-import Repositories from '../Repositories';
+import Repositories from './UserRepos/UserRepos';
 
 const User = () => {
   const { selectedUser } = useAppSelector((state) => state.user);

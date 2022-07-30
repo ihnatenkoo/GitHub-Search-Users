@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import FavoriteUsers from '../components/FavoriteUsers/FavoriteUsers';
-import Repositories from '../components/Repositories';
+import FavoriteUsers from '../components/User/FavoriteUsers/FavoriteUsers';
+import Repositories from '../components/User/UserRepos/UserRepos';
 import { useAppSelector } from '../hooks';
 
 const FavoritesPage: FC = () => {
