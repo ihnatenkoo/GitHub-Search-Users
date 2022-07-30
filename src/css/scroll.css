@@ -1,14 +1,3 @@
-@import 'material-icons/iconfont/material-icons.css';
-@import 'overlayscrollbars/css/OverlayScrollbars.min.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  line-height: 1;
-}
-
 main .os-theme-dark > .os-scrollbar-vertical > .os-scrollbar-track > .os-scrollbar-handle {
   min-height: 125px;
   max-height: 125px;

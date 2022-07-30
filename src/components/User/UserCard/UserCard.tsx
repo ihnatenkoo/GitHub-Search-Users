@@ -19,7 +19,7 @@ const UserCard: FC<IUserCard> = ({ userList = [] }) => {
         {userList &&
           userList.map((user: IFavUser) => (
             <article
-              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-3/4 sml:w-[220px] h-min xl:hover:shadow-md transition-all-03"
+              className="fav-user relative border-2 border-gray-200 rounded-xl overflow-hidden w-3/4 sml:w-[220px] h-min xl:hover:shadow-md transition-all-25"
               key={user.login}
             >
               <header className="px-5 pt-3 pb-1 relative flex items-center background-gradient-gray">
@@ -57,7 +57,7 @@ const UserCard: FC<IUserCard> = ({ userList = [] }) => {
                 Visit on GitHub
               </a>
 
-              <nav className="nav hidden xl:flex w-2/3 justify-center flex-col position-absolute-center opacity-0 transition-all-03 z-10 ">
+              <nav className="nav hidden xl:flex w-2/3 justify-center flex-col position-absolute-center opacity-0 transition-all-25 z-10 ">
                 <button className="mb-3 px-5 py-2.5 rounded-md bg-amber-400  text-white hover:bg-amber-500 transition-all">
                   <a href={user.html_url} target="_blank" rel="noreferrer">
                     View GitHub

@@ -16,8 +16,17 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error, title }) => {
       <h3 className="font-bold text-gray-600 mb-2 sml:mb-3 text-lg text-center sml:text-left">
         {title}
       </h3>
+      {repos?.length === 0 && (
+        <p className="font-medium text-red-300 text-center sml:text-left">
+          Repository list is empty
+        </p>
+      )}
       <Scroll>
-        <ReposList repos={repos} />
+        <ul className="h-[640px] mr-4">
+          {repos?.map((repo) => (
+            <ReposList repo={repo} key={repo.id} />
+          ))}
+        </ul>
       </Scroll>
     </div>
   );

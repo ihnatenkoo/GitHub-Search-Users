@@ -1,0 +1,11 @@
+@import 'material-icons/iconfont/material-icons.css';
+@import 'overlayscrollbars/css/OverlayScrollbars.min.css';
+@import './scroll.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  line-height: 1;
+}

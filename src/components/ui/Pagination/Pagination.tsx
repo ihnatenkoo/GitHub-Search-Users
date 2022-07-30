@@ -29,7 +29,7 @@ const Pagination: FC<IPagination> = ({ pageIndex, setPageIndex, usersPagesArr })
   return (
     <nav className="mt-5 sml:mt-3 flex justify-center items-center sml:col-span-2 h-[20px]">
       <button onClick={() => prevPage(pageIndex)}>
-        <span className="material-icons-outlined mr-1.5 text-base cursor-pointer text-gray-400 hover:text-gray-800 transition-all-03 ">
+        <span className="material-icons-outlined mr-1.5 text-base cursor-pointer text-gray-400 hover:text-gray-800 transition-all-25 ">
           arrow_back_ios
         </span>
       </button>
@@ -51,7 +51,7 @@ const Pagination: FC<IPagination> = ({ pageIndex, setPageIndex, usersPagesArr })
           ))}
       </ul>
       <button onClick={() => nextPage(pageIndex)}>
-        <span className="material-icons-outlined text-base h-[10px] cursor-pointer text-gray-400 hover:text-gray-800 transition-all-03">
+        <span className="material-icons-outlined text-base h-[10px] cursor-pointer text-gray-400 hover:text-gray-800 transition-all-25">
           arrow_forward_ios
         </span>
       </button>
