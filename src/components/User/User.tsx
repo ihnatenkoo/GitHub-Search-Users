@@ -7,8 +7,10 @@ import Repositories from './UserRepos/UserRepos';
 
 const User = () => {
   const { selectedUser } = useAppSelector((state) => state.user);
-  const [fetchUser, { data: user, isFetching, isError: isUserError }] = useLazyGetUserInfoQuery();
-  const [fetchUserRepos, { data: repos, isError: isReposError }] = useLazyGetUserReposQuery();
+  const [fetchUser, { data: user, isFetching: isUserFetching, isError: isUserError }] =
+    useLazyGetUserInfoQuery();
+  const [fetchUserRepos, { data: repos, isFetching: isRepoFetching, isError: isReposError }] =
+    useLazyGetUserReposQuery();
 
   useEffect(() => {
     if (selectedUser) {
@@ -17,7 +19,7 @@ const User = () => {
     }
   }, [selectedUser, fetchUser, fetchUserRepos]);
 
-  if (isFetching) {
+  if (isUserFetching || isRepoFetching) {
     return <Spinner />;
   }
 
