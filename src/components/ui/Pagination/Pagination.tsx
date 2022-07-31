@@ -3,54 +3,61 @@ import { IFavUser, TypeSetState } from '../../../types/types';
 
 interface IPagination {
   setPageIndex: TypeSetState<number>;
+  setSwitchPageHandler: TypeSetState<boolean>;
   pageIndex: number;
   usersPagesArr: IFavUser[][];
 }
 
-const Pagination: FC<IPagination> = ({ pageIndex, setPageIndex, usersPagesArr }) => {
+const Pagination: FC<IPagination> = ({
+  pageIndex,
+  setPageIndex,
+  usersPagesArr,
+  setSwitchPageHandler,
+}) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const nextPage = (pageIndex: number) => {
+  const switchPage = (pageIndex: number, value: number) => {
+    const page = pageIndex + value;
+
+    if (page === 0 || page > usersPagesArr.length) return;
+    setPageIndex((prevState) => prevState + value);
+
     scrollToTop();
-    const page = pageIndex + 1;
-    if (page > usersPagesArr.length) return;
-    setPageIndex((prev) => prev + 1);
+    setSwitchPageHandler((prevState) => !prevState);
   };
 
-  const prevPage = (pageIndex: number) => {
+  const setCertainPage = (i: number) => {
+    setPageIndex(i);
     scrollToTop();
-    const page = pageIndex - 1;
-    if (page === 0) return;
-    setPageIndex((prev) => prev - 1);
+    setSwitchPageHandler((prevState) => !prevState);
   };
 
   return (
     <nav className="mt-5 sml:mt-3 flex justify-center items-center sml:col-span-2 h-[20px]">
-      <button onClick={() => prevPage(pageIndex)}>
+      <button onClick={() => switchPage(pageIndex, -1)}>
         <span className="material-icons-outlined mr-1.5 text-base cursor-pointer text-gray-400 hover:text-gray-800 transition-all-25 ">
           arrow_back_ios
         </span>
       </button>
       <ul className="flex">
-        {usersPagesArr &&
-          usersPagesArr.map((_, i) => (
-            <li
-              onClick={() => setPageIndex(i + 1)}
-              className="mr-2 cursor-pointer text-gray-400 text-sm"
-              style={
-                i === pageIndex - 1
-                  ? { color: '#000', fontWeight: 'bold', fontSize: '20px' }
-                  : undefined
-              }
-              key={i}
-            >
-              {i + 1}
-            </li>
-          ))}
+        {usersPagesArr.map((_, i) => (
+          <li
+            onClick={() => setCertainPage(i + 1)}
+            className="mr-2 cursor-pointer text-gray-400 text-sm"
+            style={
+              i === pageIndex - 1
+                ? { color: '#000', fontWeight: 'bold', fontSize: '20px' }
+                : undefined
+            }
+            key={i}
+          >
+            {i + 1}
+          </li>
+        ))}
       </ul>
-      <button onClick={() => nextPage(pageIndex)}>
+      <button onClick={() => switchPage(pageIndex, 1)}>
         <span className="material-icons-outlined text-base h-[10px] cursor-pointer text-gray-400 hover:text-gray-800 transition-all-25">
           arrow_forward_ios
         </span>

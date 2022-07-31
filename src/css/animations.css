@@ -7,7 +7,12 @@
 }
 
 .repo-list-item.exit-active {
-  animation: repo-list-out 400ms linear forwards;
+  animation: repo-list-out 300ms linear forwards;
+}
+
+.user-page.enter-active,
+.user-page.exit-active {
+  animation: fade 300ms ease-in;
 }
 
 @keyframes change-btn-in {
@@ -40,5 +45,14 @@
   to {
     opacity: 0;
     transform: translateX(100%);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
   }
 }
