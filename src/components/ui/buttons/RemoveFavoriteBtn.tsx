@@ -5,7 +5,7 @@ interface IBtnProps {
   id: number;
 }
 
-const RemoveFavoriteBtn: FC<IBtnProps> = ({ id }) => {
+export const RemoveFavoriteBtn: FC<IBtnProps> = ({ id }) => {
   const dispatch = useAppDispatch();
 
   const clickHandler = (e: MouseEvent<HTMLElement>) => {
@@ -22,4 +22,3 @@ const RemoveFavoriteBtn: FC<IBtnProps> = ({ id }) => {
     </button>
   );
 };
-export default RemoveFavoriteBtn;

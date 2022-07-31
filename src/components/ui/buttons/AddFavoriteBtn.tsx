@@ -6,7 +6,7 @@ interface IBtnProps {
   item: IRepos;
 }
 
-const AddFavoriteBtn: FC<IBtnProps> = ({ item }) => {
+export const AddFavoriteBtn: FC<IBtnProps> = ({ item }) => {
   const dispatch = useAppDispatch();
 
   const clickHandler = (e: MouseEvent<HTMLElement>) => {
@@ -23,4 +23,3 @@ const AddFavoriteBtn: FC<IBtnProps> = ({ item }) => {
     </button>
   );
 };
-export default AddFavoriteBtn;

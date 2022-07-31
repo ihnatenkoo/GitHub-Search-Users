@@ -8,6 +8,10 @@ interface IScroll extends React.HTMLAttributes<HTMLDivElement> {
 
 const opt: OverlayScrollbars.Options = {
   scrollbars: { clickScrolling: true },
+  overflowBehavior: {
+    x: 'hidden',
+    y: 'scroll',
+  },
 };
 
 const Scroll: FC<IScroll> = ({ children, customOtp }) => {

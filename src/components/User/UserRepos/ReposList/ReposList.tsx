@@ -2,8 +2,7 @@ import { FC, useState } from 'react';
 import { useAppSelector } from '../../../../hooks';
 import { checkTextValue, setIconPath } from '../../../../utils';
 import { IRepos } from '../../../../types/types';
-import AddFavoriteBtn from '../../../ui/buttons/AddFavoriteBtn';
-import RemoveFavoriteBtn from '../../../ui/buttons/RemoveFavoriteBtn';
+import { AddFavoriteBtn, RemoveFavoriteBtn } from '../../../ui/buttons/';
 
 import '../../../../css/animations.css';
 
@@ -20,7 +19,7 @@ const ReposList: FC<IReposList> = ({ repo }) => {
   return (
     <li
       key={repo.id}
-      className="relative mb-3 sml:mb-2 px-1.5 py-2 sml:px-3 sml:pt-4 sml:pb-3 bg-white border rounded-xl cursor-pointer xl:hover:bg-gray-200 xl:hover:shadow-md transition-all background-gradient-gray"
+      className="repo-list-item relative mb-3 sml:mb-2 px-1.5 py-2 sml:px-3 sml:pt-4 sml:pb-3 bg-white border rounded-xl cursor-pointer xl:hover:bg-gray-200 xl:hover:shadow-md transition-all background-gradient-gray"
     >
       <a href={repo.html_url} className="flex items-center" target="_blank" rel="noreferrer">
         <div className="flex items-center flex-col sml:mr-5 mr-2 text-center text-sm max-w-[75px]">
@@ -34,7 +33,7 @@ const ReposList: FC<IReposList> = ({ repo }) => {
 
         <article className="w-[425px]">
           <p className="mb-0.5 font-bold text-sm sml:text-base">{repo.full_name}</p>
-          <p className="hidden sml:block sml:mb-1 sml:font-light ">
+          <p className="hidden sml:block sml:mb-1 sml:font-light">
             {repo.description?.length > 55
               ? repo.description.slice(0, 55) + '...'
               : repo.description}
@@ -62,7 +61,7 @@ const ReposList: FC<IReposList> = ({ repo }) => {
         <CSSTransition key={isFav ? 'remove' : 'add'} timeout={150}>
           <div
             onClick={() => setIsFav((prevState) => !prevState)}
-            className="absolute bottom-2 right-2 sml:bottom-3 sml:right-3 change-btn"
+            className="change-btn absolute bottom-2 right-2 sml:bottom-3 sml:right-3"
           >
             {isFav ? <RemoveFavoriteBtn id={repo.id} /> : <AddFavoriteBtn item={repo} />}
           </div>
@@ -71,4 +70,5 @@ const ReposList: FC<IReposList> = ({ repo }) => {
     </li>
   );
 };
+
 export default ReposList;

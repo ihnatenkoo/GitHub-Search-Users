@@ -1,7 +1,10 @@
 import { FC } from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { IRepos } from '../../../types/types';
 import Scroll from '../../ui/Scroll/Scroll';
 import ReposList from './ReposList/ReposList';
+
+import '../../../css/animations.css';
 interface IUserReposProps {
   repos: Array<IRepos> | undefined;
   error?: boolean;
@@ -23,9 +26,13 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error, title }) => {
       )}
       <Scroll>
         <ul className="h-[640px] mr-4">
-          {repos?.map((repo) => (
-            <ReposList repo={repo} key={repo.id} />
-          ))}
+          <TransitionGroup>
+            {repos?.map((repo) => (
+              <CSSTransition key={repo.id} timeout={400}>
+                <ReposList repo={repo} key={repo.id} />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </ul>
       </Scroll>
     </div>

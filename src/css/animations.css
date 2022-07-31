@@ -1,21 +1,44 @@
-.change-btn.enter {
-  opacity: 0;
-  transform: translateX(-10px);
-}
 .change-btn.enter-active {
-  opacity: 1;
-  transform: translateX(0%);
-}
-.change-btn.exit {
-  opacity: 1;
-  transform: translateX(0%);
-}
-.change-btn.exit-active {
-  opacity: 0;
-  transform: translateX(10px);
+  animation: change-btn-in 150ms linear forwards;
 }
 
-.change-btn.enter-active,
 .change-btn.exit-active {
-  transition: all 150ms linear;
+  animation: change-btn-out 150ms linear forwards;
+}
+
+.repo-list-item.exit-active {
+  animation: repo-list-out 400ms linear forwards;
+}
+
+@keyframes change-btn-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes change-btn-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+@keyframes repo-list-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
 }
