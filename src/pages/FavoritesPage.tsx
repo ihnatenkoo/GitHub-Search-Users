@@ -7,10 +7,10 @@ const FavoritesPage: FC = () => {
   const { repos, users } = useAppSelector((state) => state.user.favorites);
 
   return (
-    <section className="flex justify-center flex-wrap">
+    <div className="flex justify-center flex-wrap">
       <FavoriteUsers users={users} />
       <UserRepos repos={repos} title="Favorite Repositories" />
-    </section>
+    </div>
   );
 };
 export default FavoritesPage;

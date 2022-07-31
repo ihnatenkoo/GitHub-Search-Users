@@ -12,10 +12,10 @@ interface IFavUsers {
 
 const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
   const [pageIndex, setPageIndex] = useState<number>(1);
-  const [switchPageHandler, setSwitchPageHandler] = useState<boolean>(false);
   const [usersPagesArr, setUsersPagesArr] = useState<IFavUser[][]>([]);
+  const [switchPageHandler, setSwitchPageHandler] = useState<boolean>(false);
 
-  const usersPage = usersPagesArr[pageIndex - 1];
+  const singlePage = usersPagesArr[pageIndex - 1] ?? [];
 
   useEffect(() => {
     setUsersPagesArr(paginate(users));
@@ -26,19 +26,21 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
       <h3 className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
         Favorite Users
       </h3>
+      {users.length === 0 && (
+        <p className="font-medium text-red-300 text-center sml:text-left">User list is empty</p>
+      )}
 
       <CSSTransition in={switchPageHandler} timeout={300}>
-        <FavUserPage usersPage={usersPage} />
+        <FavUserPage singlePage={singlePage} />
       </CSSTransition>
 
-      {usersPagesArr?.length > 1 && (
-        <Pagination
-          setPageIndex={setPageIndex}
-          usersPagesArr={usersPagesArr}
-          pageIndex={pageIndex}
-          setSwitchPageHandler={setSwitchPageHandler}
-        />
-      )}
+      <Pagination
+        pageIndex={pageIndex}
+        setPageIndex={setPageIndex}
+        usersPagesArr={usersPagesArr}
+        setSwitchPageHandler={setSwitchPageHandler}
+        singlePage={singlePage}
+      />
     </div>
   );
 };

@@ -20,7 +20,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
     blog,
     html_url,
     followers,
-    following
+    following,
   } = user;
 
   const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: IFavUser) => i.login === login));
@@ -32,7 +32,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
     public_repos,
     followers,
     following,
-    html_url
+    html_url,
   };
 
   const dispatch = useAppDispatch();
@@ -49,12 +49,12 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
       <h3 className="font-bold text-gray-600 mb-2 text-lg text-center sml:text-left">
         User Information
       </h3>
-      <div className="flex flex-wrap justify-center">
-        <div className="sml:mr-3 mb-3 relative w-[220px] h-[220px]">
+      <div className="flex flex-wrap justify-center sml:justify-start">
+        <div className="mr-3 mb-2 sml:mb-0 relative w-[220px] h-[220px]">
           <img
             src={avatar_url}
             alt={`${name} avatar`}
-            className="mb-2 max-w-full w-full h-auto rounded-md"
+            className="max-w-full w-full h-auto rounded-md"
           />
           <button
             onClick={() => favClickHandler(login)}
