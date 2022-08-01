@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HomePage, FavoritesPage } from './pages';
+import { HomePage, FavoritesPage, Page404 } from './pages';
 import Navigation from './components/Navigation/Navigation';
 
 const App: FC = () => {
@@ -9,8 +9,9 @@ const App: FC = () => {
       <Navigation />
       <section className="mt-5 sml:mt-10 px-2">
         <Routes>
-          <Route path="" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </section>
     </main>

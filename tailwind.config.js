@@ -38,6 +38,13 @@ module.exports = {
         '.transition-all-25': {
           transition: 'all .25s linear',
         },
+        '.text-404': {
+          fontSize: '25vh',
+          fontWeight: 'bold',
+          fontFamily: 'Helvetica',
+          textShadow:
+            '0 0.005em 0 #ccc, 0 0.01em 0 #c9c9c9, 0 0.015em 0 #bbb, 0 0.02em 0 #b9b9b9, 0 0.025em 0 #aaa, 0 0.03em 0.005em rgba(0, 0, 0, 0.1), 0 0 0.025em rgba(0, 0, 0, 0.1), 0 0.005em 0.015em rgba(0, 0, 0, 0.3), 0 0.015em 0.025em rgba(0, 0, 0, 0.2), 0 0.025em 0.05em rgba(0, 0, 0, 0.25), 0 0.05em 0.05em rgba(0, 0, 0, 0.2), 0 0.1em 0.1em rgba(0, 0, 0, 0.15)',
+        },
       });
     }),
   ],
