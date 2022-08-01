@@ -72,7 +72,7 @@ export interface IRepos {
   full_name: string;
   private: boolean;
   html_url: string;
-  description: string;
+  description: string | null;
   fork: boolean;
   url: string;
   forks_url: string;

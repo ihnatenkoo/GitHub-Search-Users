@@ -34,7 +34,7 @@ const ReposList: FC<IReposList> = ({ repo }) => {
         <article className="w-[425px]">
           <p className="mb-0.5 font-bold text-sm sml:text-base">{repo.full_name}</p>
           <p className="hidden sml:block sml:mb-1 sml:font-light">
-            {repo.description?.length > 55
+            {repo.description && repo.description.length > 55
               ? repo.description.slice(0, 55) + '...'
               : repo.description}
             {!repo.description && 'No description'}
