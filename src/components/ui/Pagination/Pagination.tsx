@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { IFavUser, TypeSetState } from '../../../types/types';
 
 interface IPagination {
@@ -16,29 +16,32 @@ const Pagination: FC<IPagination> = ({
   singlePage,
   setSwitchPageHandler,
 }) => {
-  useEffect(() => {
-    if (singlePage.length === 0) switchPage(pageIndex, -1);
-  }, [singlePage]);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const switchPage = (pageIndex: number, value: number) => {
-    const page = pageIndex + value;
+  const switchPage = useCallback(
+    (pageIndex: number, value: number) => {
+      const page = pageIndex + value;
 
-    if (page === 0 || page > usersPagesArr.length) return;
-    setPageIndex((prevState) => prevState + value);
+      if (page === 0 || page > usersPagesArr.length) return;
+      setPageIndex((prevState) => prevState + value);
 
-    scrollToTop();
-    setSwitchPageHandler((prevState) => !prevState);
-  };
+      scrollToTop();
+      setSwitchPageHandler((prevState) => !prevState);
+    },
+    [usersPagesArr.length, setPageIndex, setSwitchPageHandler]
+  );
 
   const setCertainPage = (i: number) => {
     setPageIndex(i);
     scrollToTop();
     setSwitchPageHandler((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (singlePage.length === 0) switchPage(pageIndex, -1);
+  }, [singlePage, pageIndex, switchPage]);
 
   return (
     <nav className="mt-5 sml:mt-3 flex justify-center items-center sml:col-span-2 h-[20px]">
