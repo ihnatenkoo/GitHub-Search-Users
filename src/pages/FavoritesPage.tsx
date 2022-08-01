@@ -3,7 +3,7 @@ import FavoriteUsers from '../components/favorite/FavoriteUsers/FavoriteUsers';
 import UserRepos from '../components/User/UserRepos/UserRepos';
 import { useAppSelector } from '../hooks';
 
-const FavoritesPage: FC = () => {
+export const FavoritesPage: FC = () => {
   const { repos, users } = useAppSelector((state) => state.user.favorites);
 
   return (
@@ -13,4 +13,3 @@ const FavoritesPage: FC = () => {
     </div>
   );
 };
-export default FavoritesPage;

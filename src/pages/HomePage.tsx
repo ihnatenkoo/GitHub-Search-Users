@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import SearchPanel from '../components/SearchPanel/SearchPanel';
 import User from '../components/User/User';
 
-const HomePage = () => {
+export const HomePage: FC = () => {
   return (
     <>
       <SearchPanel />
@@ -9,5 +10,3 @@ const HomePage = () => {
     </>
   );
 };
-
-export default HomePage;

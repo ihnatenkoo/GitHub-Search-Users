@@ -1,10 +1,9 @@
 import { FC, useEffect, useState } from 'react';
-import { useAppDispatch } from '../../hooks';
-import { useDebounce } from '../../hooks/debounce.hook';
 import { SET_SELECTED_USER } from '../../store/github/github.slice';
 import { useSearchUsersQuery } from '../../store/github/github.api';
-import Scroll from '../ui/Scroll/Scroll';
+import { useAppDispatch, useDebounce } from '../../hooks';
 import SearchDropdown from './SearchDropdown/SearchDropdown';
+import Scroll from '../ui/Scroll/Scroll';
 
 const SearchPanel: FC = () => {
   const [search, setSearch] = useState<string>('');

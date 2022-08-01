@@ -1,9 +1,9 @@
+import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import FavoritesPage from './pages/FavoritesPage';
+import { HomePage, FavoritesPage } from './pages';
 import Navigation from './components/Navigation/Navigation';
 
-const App = () => {
+const App: FC = () => {
   return (
     <main className="bg-gray-50 min-h-screen h-max">
       <Navigation />

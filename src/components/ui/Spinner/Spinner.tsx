@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import s from './Spinner.module.css';
+import './Spinner.css';
 
 export const Spinner: FC = () => {
   return (
-    <div className={s.spinner}>
-      <div className={s['lds-default']}>
+    <div className="spinner">
+      <div className="lds-default">
         <div></div>
         <div></div>
         <div></div>
