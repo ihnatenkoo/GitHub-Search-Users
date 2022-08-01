@@ -21,7 +21,7 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error, title }) => {
       </h3>
       {repos?.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">
-          Repository list is empty
+          Repositories list is empty
         </p>
       )}
       <Scroll>

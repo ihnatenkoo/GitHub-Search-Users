@@ -27,7 +27,7 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
         Favorite Users
       </h3>
       {users.length === 0 && (
-        <p className="font-medium text-red-300 text-center sml:text-left">User list is empty</p>
+        <p className="font-medium text-red-300 text-center sml:text-left">Users list is empty</p>
       )}
 
       <CSSTransition in={switchPageHandler} timeout={300}>
