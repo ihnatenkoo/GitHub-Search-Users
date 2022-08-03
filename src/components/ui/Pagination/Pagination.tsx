@@ -47,8 +47,11 @@ const Pagination: FC<IPagination> = ({
     <nav className="mt-5 sml:mt-3 flex justify-center items-center sml:col-span-2 h-[20px]">
       {usersPagesArr.length > 1 && (
         <>
-          <button onClick={() => switchPage(pageIndex, -1)}>
-            <span className="material-icons-outlined mr-1.5 text-base cursor-pointer text-gray-400 hover:text-gray-800 transition-all-25 ">
+          <button
+            onClick={() => switchPage(pageIndex, -1)}
+            style={pageIndex === 1 ? { opacity: 0.2 } : undefined}
+          >
+            <span className="material-icons-outlined mr-1.5 text-base cursor-pointer text-gray-500 hover:text-gray-800 transition-all-25 ">
               arrow_back_ios
             </span>
           </button>
@@ -68,8 +71,11 @@ const Pagination: FC<IPagination> = ({
               </li>
             ))}
           </ul>
-          <button onClick={() => switchPage(pageIndex, 1)}>
-            <span className="material-icons-outlined text-base h-[10px] cursor-pointer text-gray-400 hover:text-gray-800 transition-all-25">
+          <button
+            onClick={() => switchPage(pageIndex, 1)}
+            style={pageIndex === usersPagesArr.length ? { opacity: 0.2 } : undefined}
+          >
+            <span className="material-icons-outlined text-base h-[10px] cursor-pointer text-gray-500 hover:text-gray-800 transition-all-25">
               arrow_forward_ios
             </span>
           </button>

@@ -29,6 +29,9 @@ module.exports = {
           background:
             'linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 1%, rgba(0, 0, 0, 0) 100%)',
         },
+        '.background-gray-opacity05': {
+          background: 'rgba(237, 228, 228, 0.4);',
+        },
         '.position-absolute-center': {
           position: 'absolute',
           top: '50%',

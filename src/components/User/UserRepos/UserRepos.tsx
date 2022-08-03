@@ -25,7 +25,7 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error, title }) => {
         </p>
       )}
       <Scroll>
-        <ul className="h-[640px] mr-4">
+        <ul className="h-[620px] mr-4">
           <TransitionGroup>
             {repos?.map((repo) => (
               <CSSTransition key={repo.id} timeout={400}>

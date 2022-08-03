@@ -58,14 +58,14 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
           />
           <button
             onClick={() => favClickHandler(login)}
-            className="absolute top-2 left-2 text-red-700  cursor-pointer bg-zinc-200  rounded-full select-none"
+            className="absolute top-2 left-2 text-red-700 cursor-pointer background-gray-opacity05 rounded-full select-none w-[50px] h-[50px]"
           >
             <span className="material-icons-outlined text-4xl p-1.5">
               {isFav ? 'favorite' : 'favorite_border'}
             </span>
           </button>
         </div>
-        <ul className="text-gray-600 font-bold max-w-[220px] sml:max-w-[300px]">
+        <ul className="text-gray-600 font-bold max-w-[220px] sml:max-w-[300px] break-all">
           <li className="mb-2">
             Login: <span className="font-normal text-gray-500">{login}</span>
           </li>
@@ -93,7 +93,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
                 {blog}
               </a>
             ) : (
-              '-'
+              ' -'
             )}
           </li>
           <li>
