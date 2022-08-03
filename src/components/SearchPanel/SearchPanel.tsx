@@ -3,6 +3,7 @@ import { SET_SELECTED_USER } from '../../store/github/github.slice';
 import { useSearchUsersQuery } from '../../store/github/github.api';
 import { useAppDispatch, useDebounce } from '../../hooks';
 import SearchDropdown from './SearchDropdown/SearchDropdown';
+import SearchSpinner from '../ui/SearchSpinner/SearchSpinner';
 import Scroll from '../ui/Scroll/Scroll';
 
 const SearchPanel: FC = () => {
@@ -45,14 +46,14 @@ const SearchPanel: FC = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {search && (
-        <button
-          onClick={clearInputHandler}
-          className="w-[25px] h-[25px] absolute z-10 top-2.5 right-3 text-gray-500 cursor-pointer animate-in"
-        >
-          <span className="material-icons-outlined ">close</span>
-        </button>
-      )}
+      <div className="w-[25px] h-[25px] absolute z-10 top-2.5 right-3 text-gray-500 cursor-pointer">
+        {search && !isFetching && (
+          <button onClick={clearInputHandler}>
+            <span className="material-icons-outlined">close</span>
+          </button>
+        )}
+        {isFetching && <SearchSpinner />}
+      </div>
 
       <div className="absolute top-[42px] left-0 right-0 shadow-md bg-white z-10 rounded-md">
         {showDropdown && users && (
@@ -63,13 +64,20 @@ const SearchPanel: FC = () => {
       </div>
 
       <div className="text-center py-2 absolute top-[5px] right-[10px]">
-        {isFetching && !isError && <p className="mr-10 text-gray-500">Loading...</p>}
-        {isError && !isFetching && <p className="mr-10 text-red-600 ">Something went wrong...</p>}
-        {search.length > 3 && users?.length === 0 && (
-          <p className="mr-10 text-gray-500">User not found</p>
+        {isError && !isFetching && (
+          <span className="mr-10 text-red-600 animate-in">Something went wrong...</span>
+        )}
+        {users?.length === 0 && search.length >= 3 && !isError && (
+          <span className="mr-10 text-gray-500 animate-in">User not found</span>
+        )}
+        {search.length > 0 && search.length < 3 && (
+          <span className="mr-10 text-gray-500 animate-in">
+            Enter {3 - search.length} more characters
+          </span>
         )}
       </div>
     </div>
   );
 };
+
 export default SearchPanel;
