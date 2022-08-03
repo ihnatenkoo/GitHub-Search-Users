@@ -5,10 +5,11 @@ import { useAppDispatch, useDebounce } from '../../hooks';
 import SearchDropdown from './SearchDropdown/SearchDropdown';
 import SearchSpinner from '../ui/SearchSpinner/SearchSpinner';
 import Scroll from '../ui/Scroll/Scroll';
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 const SearchPanel: FC = () => {
   const [search, setSearch] = useState<string>('');
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const { ref, isShow: showDropdown, setIsShow: setShowDropdown } = useOutsideClick(false);
 
   const debounced = useDebounce(search);
   const dispatch = useAppDispatch();
@@ -17,24 +18,23 @@ const SearchPanel: FC = () => {
     data: users,
     isFetching,
     isError,
-  } = useSearchUsersQuery(search, {
-    skip: debounced.length < 3 || search === '',
+  } = useSearchUsersQuery(debounced, {
+    skip: search.length < 3 || search === '',
   });
 
   const getUserInfo = (username: string) => {
-    setShowDropdown(false);
-    setSearch('');
+    clearSearchQuery();
     dispatch(SET_SELECTED_USER(username));
   };
 
-  const clearInputHandler = () => {
+  const clearSearchQuery = () => {
     setShowDropdown(false);
     setSearch('');
   };
 
   useEffect(() => {
-    if (users && users.length > 0 && debounced.length >= 3) setShowDropdown(true);
-  }, [debounced, users]);
+    if (users && users.length > 0 && search.length >= 3) setShowDropdown(true);
+  }, [search, users, setShowDropdown]);
 
   return (
     <div className="mx-auto mb-5 relative w-[560px] max-w-full">
@@ -48,17 +48,20 @@ const SearchPanel: FC = () => {
 
       <div className="w-[25px] h-[25px] absolute z-10 top-2.5 right-3 text-gray-500 cursor-pointer">
         {search && !isFetching && (
-          <button onClick={clearInputHandler}>
+          <button onClick={clearSearchQuery}>
             <span className="material-icons-outlined">close</span>
           </button>
         )}
         {isFetching && <SearchSpinner />}
       </div>
 
-      <div className="absolute top-[42px] left-0 right-0 shadow-md bg-white z-10 rounded-md">
+      <div
+        ref={ref}
+        className="absolute top-[42px] left-0 right-0 shadow-md bg-white z-10 rounded-md"
+      >
         {showDropdown && users && (
           <Scroll>
-            <SearchDropdown users={users} getUserInfo={getUserInfo}></SearchDropdown>
+            <SearchDropdown users={users} getUserInfo={getUserInfo} />
           </Scroll>
         )}
       </div>
