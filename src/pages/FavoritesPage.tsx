@@ -9,7 +9,7 @@ export const FavoritesPage: FC = () => {
   return (
     <div className="flex justify-center flex-wrap">
       <FavoriteUsers users={users} />
-      <UserRepos repos={repos} title="Favorite Repositories" />
+      <UserRepos repos={repos} title="Favorite Repositories" showCount />
     </div>
   );
 };

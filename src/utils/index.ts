@@ -1,6 +1,9 @@
 import { IFavUser } from '../types/types';
 
-export const checkTextValue = (text: string | null | undefined): string => {
+export const checkTextValue = (text: string | null | undefined, value: number = 50): string => {
+  if (text && text?.length > value) {
+    return text.slice(0, value) + '...';
+  }
   if (text) return text;
   return 'No info';
 };

@@ -65,7 +65,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
             </span>
           </button>
         </div>
-        <ul className="text-gray-600 font-bold max-w-[220px] sml:max-w-[300px] break-all">
+        <ul className="text-gray-600 font-bold max-w-[220px] sml:max-w-[300px] break-words">
           <li className="mb-2">
             Login: <span className="font-normal text-gray-500">{login}</span>
           </li>
@@ -73,7 +73,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
             Name: <span className="font-normal text-gray-500">{checkTextValue(name)}</span>
           </li>
           <li className="mb-2 leading-5">
-            Bio: <span className="font-normal text-gray-500">{checkTextValue(bio)}</span>
+            Bio: <span className="font-normal text-gray-500">{checkTextValue(bio, 145)}</span>
           </li>
           <li className="mb-2">
             Location: <span className="font-normal text-gray-500">{checkTextValue(location)}</span>

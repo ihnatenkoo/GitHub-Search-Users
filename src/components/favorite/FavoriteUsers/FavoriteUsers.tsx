@@ -24,7 +24,7 @@ const FavoriteUsers: FC<IFavUsers> = ({ users }) => {
   return (
     <div className="mb-5 sml:mr-10 w-[450px] max-w-full">
       <h3 className="text-center sml:text-left mb-2 sml:mb-3 font-bold text-gray-600 text-lg">
-        Favorite Users
+        Favorite Users ({users.length})
       </h3>
       {users.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">Users list is empty</p>

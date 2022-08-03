@@ -8,16 +8,17 @@ import '../../../css/animations.css';
 interface IUserReposProps {
   repos: Array<IRepos> | undefined;
   error?: boolean;
+  showCount?: boolean;
   title: string;
 }
 
-const UserRepos: FC<IUserReposProps> = ({ repos, error, title }) => {
+const UserRepos: FC<IUserReposProps> = ({ repos, error, title, showCount }) => {
   if (error) return <p className="font-medium text-red-400">Error repositories loading...</p>;
 
   return (
     <div className="w-[550px] max-w-full">
       <h3 className="font-bold text-gray-600 mb-2 sml:mb-3 text-lg text-center sml:text-left">
-        {title}
+        {title} {showCount && `(${repos?.length})`}
       </h3>
       {repos?.length === 0 && (
         <p className="font-medium text-red-300 text-center sml:text-left">
