@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/';
 import { ADD_FAVORITE_USER, REMOVE_FAVORITE_USER } from '../../../store/github/github.slice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/';
 import { IFavUser, ISingleUser } from '../../../types/types';
 import { checkTextValue } from '../../../utils';
 interface IUserInfoProps {
@@ -10,6 +10,9 @@ interface IUserInfoProps {
 
 const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   const favUsers = useAppSelector((state) => state.user.favorites.users);
+  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: IFavUser) => i.login === login));
+  const dispatch = useAppDispatch();
+
   const {
     login,
     avatar_url,
@@ -23,8 +26,6 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
     following,
   } = user;
 
-  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: IFavUser) => i.login === login));
-
   const favUserData: IFavUser = {
     login,
     name,
@@ -34,8 +35,6 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
     following,
     html_url,
   };
-
-  const dispatch = useAppDispatch();
 
   const favClickHandler = (login: string) => {
     isFav ? dispatch(REMOVE_FAVORITE_USER(login)) : dispatch(ADD_FAVORITE_USER(favUserData));

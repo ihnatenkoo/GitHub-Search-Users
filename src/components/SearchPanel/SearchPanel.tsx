@@ -1,11 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import { SET_SELECTED_USER } from '../../store/github/github.slice';
 import { useSearchUsersQuery } from '../../store/github/github.api';
-import { useAppDispatch, useDebounce } from '../../hooks';
+import { useAppDispatch, useDebounce, useOutsideClick } from '../../hooks';
 import SearchDropdown from './SearchDropdown/SearchDropdown';
 import SearchSpinner from '../ui/SearchSpinner/SearchSpinner';
 import Scroll from '../ui/Scroll/Scroll';
-import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 const SearchPanel: FC = () => {
   const [search, setSearch] = useState<string>('');
@@ -19,7 +18,7 @@ const SearchPanel: FC = () => {
     isFetching,
     isError,
   } = useSearchUsersQuery(debounced, {
-    skip: search.length < 3 || search === '',
+    skip: debounced.length < 3 || search === '',
   });
 
   const getUserInfo = (username: string) => {
