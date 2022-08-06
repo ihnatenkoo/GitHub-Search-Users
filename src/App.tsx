@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage, FavoritesPage, Page404 } from './pages';
 import Navigation from './components/Navigation/Navigation';
+import { ToastContainer } from 'react-toastify';
+import { mainToastsOpts } from './utils/toasts';
 
 const App: FC = () => {
   return (
@@ -14,6 +16,7 @@ const App: FC = () => {
           <Route path="*" element={<Page404 />} />
         </Routes>
       </section>
+      <ToastContainer {...mainToastsOpts} />
     </main>
   );
 };

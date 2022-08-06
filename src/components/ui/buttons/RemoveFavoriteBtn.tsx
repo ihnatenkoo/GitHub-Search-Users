@@ -1,6 +1,7 @@
 import { FC, MouseEvent } from 'react';
 import { useAppDispatch } from '../../../hooks';
 import { REMOVE_FAVORITE_REPO } from '../../../store/github/github.slice';
+import { customToasts } from '../../../utils/toasts';
 interface IBtnProps {
   id: number;
 }
@@ -10,6 +11,7 @@ export const RemoveFavoriteBtn: FC<IBtnProps> = ({ id }) => {
 
   const clickHandler = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    customToasts('remove', 'repository');
     dispatch(REMOVE_FAVORITE_REPO(id));
   };
 

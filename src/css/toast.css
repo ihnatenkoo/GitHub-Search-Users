@@ -1,0 +1,14 @@
+.Toastify__toast-body {
+  line-height: 1.15;
+  word-break: break-all;
+}
+
+.Toastify__toast-container--top-right {
+  padding: 10px;
+  top: 0;
+  right: 0;
+}
+
+.Toastify__toast-theme--light.Toastify__toast--info {
+  margin-bottom: 5px;
+}

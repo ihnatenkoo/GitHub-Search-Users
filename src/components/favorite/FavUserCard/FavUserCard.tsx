@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useAppDispatch } from '../../../hooks';
 import { REMOVE_FAVORITE_USER } from '../../../store/github/github.slice';
 import { IFavUser } from '../../../types/types';
+import { customToasts } from '../../../utils/toasts';
 
 interface IFavUserCard {
   user: IFavUser;
@@ -9,6 +10,11 @@ interface IFavUserCard {
 
 const FavUserCard: FC<IFavUserCard> = ({ user }) => {
   const dispatch = useAppDispatch();
+
+  const deleteUserFromFavorites = (login: string) => {
+    customToasts('remove', login);
+    dispatch(REMOVE_FAVORITE_USER(login));
+  };
 
   return (
     <article
@@ -57,7 +63,7 @@ const FavUserCard: FC<IFavUserCard> = ({ user }) => {
           </a>
         </button>
         <button
-          onClick={() => dispatch(REMOVE_FAVORITE_USER(user.login))}
+          onClick={() => deleteUserFromFavorites(user.login)}
           className="px-5 py-2.5 rounded-md bg-red-500  text-white hover:bg-red-600 transition-all"
         >
           Remove User
@@ -66,7 +72,7 @@ const FavUserCard: FC<IFavUserCard> = ({ user }) => {
 
       <button
         className="w-[25px] h-[25px] absolute top-1.5 right-1.5 text-gray-300 cursor-pointer xl:hidden"
-        onClick={() => dispatch(REMOVE_FAVORITE_USER(user.login))}
+        onClick={() => deleteUserFromFavorites(user.login)}
       >
         <span className="material-icons-outlined ">close</span>
       </button>

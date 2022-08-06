@@ -3,6 +3,8 @@ import { ADD_FAVORITE_USER, REMOVE_FAVORITE_USER } from '../../../store/github/g
 import { useAppDispatch, useAppSelector } from '../../../hooks/';
 import { IFavUser, ISingleUser } from '../../../types/types';
 import { checkTextValue } from '../../../utils';
+import { customToasts } from '../../../utils/toasts';
+
 interface IUserInfoProps {
   user: ISingleUser;
   error: boolean;
@@ -10,7 +12,6 @@ interface IUserInfoProps {
 
 const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   const favUsers = useAppSelector((state) => state.user.favorites.users);
-  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: IFavUser) => i.login === login));
   const dispatch = useAppDispatch();
 
   const {
@@ -26,6 +27,8 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
     following,
   } = user;
 
+  const [isFav, setIsFav] = useState<boolean>(favUsers.some((i: IFavUser) => i.login === login));
+
   const favUserData: IFavUser = {
     login,
     name,
@@ -37,6 +40,7 @@ const UserInfo: FC<IUserInfoProps> = ({ user, error }) => {
   };
 
   const favClickHandler = (login: string) => {
+    isFav ? customToasts('remove', login) : customToasts('add', login);
     isFav ? dispatch(REMOVE_FAVORITE_USER(login)) : dispatch(ADD_FAVORITE_USER(favUserData));
     setIsFav((prev) => !prev);
   };
