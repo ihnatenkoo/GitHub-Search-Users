@@ -1,0 +1,25 @@
+{
+	"bracketSpacing": true,
+	"auto_format_on_save": true,
+	"tabWidth": 2,
+	"useTabs": true,
+	"printWidth": 80,
+	"singleQuote": true,
+	"semi": true,
+	"newline-per-chained-call": false,
+	"trailingComma": "es5",
+	"importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"(.css)$",
+		"types$",
+		"utils$",
+		"utils/(.*)$",
+		"hooks$",
+		"store/(.*)",
+		"components/(.*)",
+		"^../(.*)",
+		"^./(.*)"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
+}
