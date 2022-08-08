@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { IFavUser } from '../../../types/types';
 import FavUserCard from '../FavUserCard/FavUserCard';
 

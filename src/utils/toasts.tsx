@@ -1,3 +1,4 @@
+import React from 'react';
 import { Slide, toast } from 'react-toastify';
 
 type ActionType = 'add' | 'remove';

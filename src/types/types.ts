@@ -64,6 +64,13 @@ export interface ISingleUser {
   updated_at: Date;
 }
 
+interface ILicense {
+  key: string;
+  name: string;
+  spdx_id: string;
+  url: string;
+  node_id: string;
+}
 export interface IRepos {
   owner: IReposOwner;
   id: number;
@@ -118,7 +125,7 @@ export interface IRepos {
   ssh_url: string;
   clone_url: string;
   svn_url: string;
-  homepage: any;
+  homepage: string | null;
   size: number;
   stargazers_count: number;
   watchers_count: number;
@@ -129,15 +136,15 @@ export interface IRepos {
   has_wiki: boolean;
   has_pages: boolean;
   forks_count: number;
-  mirror_url: any;
+  mirror_url: string | null;
   archived: boolean;
   disabled: boolean;
   open_issues_count: number;
-  license: any;
+  license: ILicense | null;
   allow_forking: boolean;
   is_template: boolean;
   web_commit_signoff_required: boolean;
-  topics: Array<any>;
+  topics: Array<string>;
   visibility: string;
   forks: number;
   open_issues: number;

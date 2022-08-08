@@ -1,5 +1,5 @@
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import OverlayScrollbars from 'overlayscrollbars';
 
 interface IScroll extends React.HTMLAttributes<HTMLDivElement> {

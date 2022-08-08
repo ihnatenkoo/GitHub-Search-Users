@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { SET_SELECTED_USER } from '../../store/github/github.slice';
 import { useSearchUsersQuery } from '../../store/github/github.api';
 import { useAppDispatch, useDebounce, useOutsideClick } from '../../hooks';

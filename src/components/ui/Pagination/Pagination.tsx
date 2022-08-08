@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { IFavUser, TypeSetState } from '../../../types/types';
 
 interface IPagination {

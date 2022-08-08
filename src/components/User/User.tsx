@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useAppSelector } from '../../hooks';
 import { useLazyGetUserInfoQuery, useLazyGetUserReposQuery } from '../../store/github/github.api';
 import { Spinner } from '../ui/Spinner/Spinner';

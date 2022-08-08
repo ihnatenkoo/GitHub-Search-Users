@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { IRepos } from '../../../types/types';
 import Scroll from '../../ui/Scroll/Scroll';

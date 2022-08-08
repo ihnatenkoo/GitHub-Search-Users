@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ADD_FAVORITE_USER, REMOVE_FAVORITE_USER } from '../../../store/github/github.slice';
 import { useAppDispatch, useAppSelector } from '../../../hooks/';
 import { IFavUser, ISingleUser } from '../../../types/types';

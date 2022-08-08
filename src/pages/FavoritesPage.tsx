@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import FavoriteUsers from '../components/favorite/FavoriteUsers/FavoriteUsers';
 import UserRepos from '../components/User/UserRepos/UserRepos';
 import { useAppSelector } from '../hooks';

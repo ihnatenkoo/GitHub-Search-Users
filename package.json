@@ -7,14 +7,9 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.45",
-    "@types/overlayscrollbars": "^1.12.1",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-transition-group": "^4.4.5",
     "dayjs": "^1.11.4",
     "material-icons": "^1.11.7",
+    "overlayscrollbars": "^1.13.3",
     "overlayscrollbars-react": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,17 +21,27 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.6.4",
+    "@types/overlayscrollbars": "^1.12.1",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-transition-group": "^4.4.5",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.21.0",
+    "eslint-plugin-react": "^7.30.1",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint ."
   },
   "browserslist": {
     "production": [
@@ -49,10 +54,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.6"
   }
 }

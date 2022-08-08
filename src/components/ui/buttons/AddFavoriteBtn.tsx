@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import { useAppDispatch } from '../../../hooks';
 import { ADD_FAVORITE_REPO } from '../../../store/github/github.slice';
 import { IRepos } from '../../../types/types';

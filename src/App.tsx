@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage, FavoritesPage, Page404 } from './pages';
 import Navigation from './components/Navigation/Navigation';

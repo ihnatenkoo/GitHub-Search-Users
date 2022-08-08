@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useAppSelector } from '../../../../hooks';
 import { checkTextValue, setIconPath } from '../../../../utils';
 import { IRepos } from '../../../../types/types';

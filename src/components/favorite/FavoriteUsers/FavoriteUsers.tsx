@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { IFavUser } from '../../../types/types';
 import { paginate } from '../../../utils';
 import Pagination from '../../ui/Pagination/Pagination';
