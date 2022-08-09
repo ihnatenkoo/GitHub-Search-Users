@@ -34,3 +34,4 @@ package.json
 package-lock.json
 tsconfig.json
 tailwind.config.js
+craco.config.js
