@@ -27,7 +27,7 @@ const UserRepos: FC<IUserReposProps> = ({ repos, error, title, showCount }) => {
 			<h3 className="font-bold text-gray-600 mb-2 sml:mb-3 text-lg text-center sml:text-left">
 				{title} {showCount && `(${repos?.length})`}
 			</h3>
-			{repos?.length === 0 && (
+			{!repos?.length && (
 				<p className="font-medium text-red-300 text-center sml:text-left">
 					Repositories list is empty
 				</p>
