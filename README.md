@@ -5,6 +5,10 @@
 <code><img title="Redux" alt="apple" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/redux/redux-original.svg" /></code>
 <code><img title="Tailwind" alt="apple" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/tailwindcss/tailwindcss-plain.svg" /></code>
 
+### 1. Home page:
+![enter image description here](https://i.ibb.co/7RkWFx5/Screenshot-6.png)
+### 2. Favorite page:
+![enter image description here](https://i.ibb.co/197ySRC/Screenshot-8.png)
 ### Hosted on Netlify service:
 
 ### [https://github-search-2022.netlify.app](https://github-search-2022.netlify.app)
